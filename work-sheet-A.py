@@ -23,9 +23,9 @@
 
 #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 2: Expressions of inequality")
-print("Expected output: True")
+# print("\n------")
+# print("Task 2: Expressions of inequality")
+# print("Expected output: True")
 
 # Task 2: Change the operator in the statement below so that it displays
 # "True" instead of "False."
@@ -38,9 +38,9 @@ print("Expected output: True")
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 3: Variable assignment")
-print("Expected output: 54")
+# print("\n------")
+# print("Task 3: Variable assignment")
+# print("Expected output: 54")
 
 # Task 3: Change the variable assignment below so that the print statement
 # displays "54." (Don't change the print statement!)
@@ -55,9 +55,9 @@ print("Expected output: 54")
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 4: Types")
-print("Expected output: <class 'str'>")
+# print("\n------")
+# print("Task 4: Types")
+# print("Expected output: <class 'str'>")
 
 # Task 4: Three variables are assigned below, all with different types.
 # Replace the word "None" inside the parentheses of type() in the print
@@ -85,13 +85,24 @@ print("Expected output: <class 'str'>")
 # print("Task 5: Questions about strings")
 # print("Expected output: 51")
 
-# # Task 5: Inside the call to "print" below, write an expression that evaluates
-# # to the sum of the lengths of the two string variables defined below
-# # (first_line and second_line). Use the len() function.
+# Task 5: Inside the call to "print" below, write an expression that evaluates
+# to the sum of the lengths of the two string variables defined below
+# (first_line and second_line). Use the len() function.
 
+#Original
 # first_line = "It was the best of times."
 # second_line = "It was the worst of times."
 # print() # your code here!
+
+# #Awnser
+# first_line = "It was the best of times."
+# second_line = "It was the worst of times."
+# lens = first_line + second_line
+
+# print(lens) # your code here!
+
+
+
 
 # #------------------------------------------------------------------------
 
