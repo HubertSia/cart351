@@ -45,9 +45,13 @@ print("Expected output: 54")
 # Task 3: Change the variable assignment below so that the print statement
 # displays "54." (Don't change the print statement!)
 
-# 
-a_num_variable = 17
-print(a_num_variable)
+# #Original
+# a_num_variable = 17
+# print(a_num_variable)
+
+#Awnsers
+# a_num_variable = 17
+# print(a_num_variable + 37)
 
 # #------------------------------------------------------------------------
 
