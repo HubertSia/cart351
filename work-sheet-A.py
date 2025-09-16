@@ -55,18 +55,28 @@ print("Expected output: 54")
 
 # #------------------------------------------------------------------------
 
-# print("\n------")
-# print("Task 4: Types")
-# print("Expected output: <class 'str'>")
+print("\n------")
+print("Task 4: Types")
+print("Expected output: <class 'str'>")
 
-# # Task 4: Three variables are assigned below, all with different types.
-# # Replace the word "None" inside the parentheses of type() in the print
-# # statement below so that it prints "<class 'str'>".
+# Task 4: Three variables are assigned below, all with different types.
+# Replace the word "None" inside the parentheses of type() in the print
+# statement below so that it prints "<class 'str'>".
 
+
+# # Original
 # x = 14
 # y = 17.4
 # z = "today is a fine day for sailing!"
 # print(type(None))
+
+# # Awnser
+# x = 14
+# y = 17.4
+# z = "today is a fine day for sailing!"
+# print(type(z))
+
+
 
 # #------------------------------------------------------------------------
 
