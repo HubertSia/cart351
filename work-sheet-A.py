@@ -313,9 +313,9 @@
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 16: List slices, part 2")
-print("Expected output: ['delta', 'epsilon']")
+# print("\n------")
+# print("Task 16: List slices, part 2")
+# print("Expected output: ['delta', 'epsilon']")
 
 # Task 16: Change the value of the variable "foo" below so that the print
 # statement displays the last two members of the list "greek" (defined above).
@@ -341,9 +341,18 @@ print("Expected output: ['delta', 'epsilon']")
 # # Task 17: Change the value of the variable "letter_to_look_for' below so
 # # that the print statement displays "True."
 
+#Original
 # vegetables= ["aubergines", "carrots", "turnips", "fiddleheads", "artichokes"]
 # word_to_look_for = "carret"
 # print(word_to_look_for in vegetables)
+
+
+# #Awnser
+# vegetables= ["aubergines", "carrots", "turnips", "fiddleheads", "artichokes"]
+# word_to_look_for = "carrots"
+# print(word_to_look_for in vegetables)
+
+
 
 # #------------------------------------------------------------------------
 
