@@ -106,9 +106,9 @@
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 6: Questions about strings, part 2")
-print("Expected output: 25")
+# print("\n------")
+# print("Task 6: Questions about strings, part 2")
+# print("Expected output: 25")
 
 # Task 6: Inside the call to "print" below, write an expression that evaluates
 # to the position of the word "window" in the string defined in the variable
@@ -148,14 +148,20 @@ print("Expected output: 25")
 # print("Task 8: String transformations, part 2")
 # print("Expected output: SOMEONE WHO HAS SPENT TOO MUCH TIME")
 
-# # Task 8: Using the previously defined "partLy" variable, write an
-# # expression inside the "print" function below that evaluates to the content of
-# # the string, with all whitespace removed, and with all letters converted to
-# # uppercase. Use the .upper() method.
+# Task 8: Using the previously defined "partLy" variable, write an
+# expression inside the "print" function below that evaluates to the content of
+# the string, with all whitespace removed, and with all letters converted to
+# uppercase. Use the .upper() method.
 
-# print() # your code here!
+# #Original
+# print(  ) # your code here!
 
-# #------------------------------------------------------------------------
+# #Awnser
+# partLy = "     someone who has spent too much time    \n"
+# print(partLy.strip(  ).upper())
+
+
+#------------------------------------------------------------------------
 
 # print("\n------")
 # print("Task 9: String indexing")
