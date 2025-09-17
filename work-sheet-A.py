@@ -313,15 +313,23 @@
 
 # #------------------------------------------------------------------------
 
-# print("\n------")
-# print("Task 16: List slices, part 2")
-# print("Expected output: ['delta', 'epsilon']")
+print("\n------")
+print("Task 16: List slices, part 2")
+print("Expected output: ['delta', 'epsilon']")
 
-# # Task 16: Change the value of the variable "foo" below so that the print
-# # statement displays the last two members of the list "greek" (defined above).
-# # Use a negative number for "foo".
+# Task 16: Change the value of the variable "foo" below so that the print
+# statement displays the last two members of the list "greek" (defined above).
+# Use a negative number for "foo".
 
+
+# #Original
 # foo = 0
+# print(greek[foo:])
+
+
+# #Awnser
+# foo = -2
+# greek = ["alpha", "beta", "gamma", "delta", "epsilon"]
 # print(greek[foo:])
 
 # #------------------------------------------------------------------------
