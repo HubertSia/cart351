@@ -206,9 +206,9 @@
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 11: Integers and strings")
-print("Expected output: 100")
+# print("\n------")
+# print("Task 11: Integers and strings")
+# print("Expected output: 100")
 
 # Task 11: Modify the statement below so that it displays the number 100.
 # Do this using the int() function (hint: you need to use it twice).
@@ -248,14 +248,27 @@ print("Expected output: 100")
 # print("Task 13: Conditions II")
 # print("Expected output: the condition test passed")
 
-# # Task 13: Modify the if statement below to print the statement
-# # 'the condition test passed'. Do not change the values of the varaibles.
+# Task 13: Modify the if statement below to print the statement
+# 'the condition test passed'. Do not change the values of the varaibles.
+
+
+# #Original
 # test_var_three = 400
 # test_var_two = 800
 # if test_var_three > 200 and test_var_two <400:	
 # 	print("the condition test passed")
 # else:
 # 	print("the condition test not passed")
+	
+    
+# #Awnser
+# test_var_three = 400
+# test_var_two = 800
+# if test_var_three > 200 and test_var_two <400:	
+# 		print("the condition test not passed")
+# else:
+#     	print("the condition test passed")
+
 # #------------------------------------------------------------------------
 
 # print("\n------")
