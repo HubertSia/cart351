@@ -375,19 +375,19 @@
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 19: Modifying lists")
-print("Expected output: ['artichokes', 'aubergines', 'carrots', 'fiddleheads', 'turnips','radishes']")
+# print("\n------")
+# print("Task 19: Modifying lists")
+# print("Expected output: ['artichokes', 'aubergines', 'carrots', 'fiddleheads', 'turnips','radishes']")
 
-# Task 19: Write a Python statement that adds a new item, "radishes", to the
-# list "vegetables" (defined above). The print statement should display the updated
-# list.
+# # Task 19: Write a Python statement that adds a new item, "radishes", to the
+# # list "vegetables" (defined above). The print statement should display the updated
+# # list.
 
-# write your statement here
+# # write your statement here
 
-vegetables= ["artichokes", "aubergines", "carrots", "fiddleheads", "turnips"]
-vegetables.append("radishes")
-print(vegetables)
+# vegetables= ["artichokes", "aubergines", "carrots", "fiddleheads", "turnips"]
+# vegetables.append("radishes")
+# print(vegetables)
 
 # #------------------------------------------------------------------------
 
@@ -405,8 +405,10 @@ print(vegetables)
 # # "vegetables" (defined above). (The list should contain the item that you
 # # added to the list in task 17.)
 
+# vegetables= ["artichokes", "aubergines", "carrots", "fiddleheads", "turnips", "radishes"]
 
-
+# for item in vegetables:
+#     print(item)
 
 # #------------------------------------------------------------------------
 
@@ -425,7 +427,9 @@ print(vegetables)
 # # "vegetables" (defined above), but with the first letter of each item capitalized.
 # # (The list should contain the item that you added to the list in task 17.)
 
-
+# vegetables= ["artichokes", "aubergines", "carrots", "fiddleheads", "turnips", "radishes"]
+# for item in vegetables:
+#     print(item.title())
 
 
 # #------------------------------------------------------------------------
