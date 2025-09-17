@@ -434,22 +434,22 @@
 
 # #------------------------------------------------------------------------
 
-# print("\n------")
-# print("Task 22: Split and join")
-# print("Expected output:")
-# print("  25")
-# print("  9-18-25")
+print("\n------")
+print("Task 22: Split and join")
+print("Expected output:")
+print("  25")
+print("  9-18-25")
 
-# # Task 22: Modify the variable "separator" below so that the first print
-# # statement displays "25". Modify the variable "glue" so that the second print
-# # statement displays "9-18-25".
+# Task 22: Modify the variable "separator" below so that the first print
+# statement displays "25". Modify the variable "glue" so that the second print
+# statement displays "9-18-25".
 
 
-# separator = "?"
-# glue = "?"
-# parts = "9/18/25".split(separator)
-# print(parts[-1])
-# print(glue.join(parts))
+separator = "/"
+glue = "-"
+parts = "9/18/25".split(separator)
+print(parts[-1])
+print(glue.join(parts))
 
 # #------------------------------------------------------------------------
 
