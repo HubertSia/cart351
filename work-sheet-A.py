@@ -356,9 +356,9 @@
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 18: List operations, part 2")
-print("Expected output: ['artichokes', 'aubergines', 'carrots', 'fiddleheads', 'turnips']")
+# print("\n------")
+# print("Task 18: List operations, part 2")
+# print("Expected output: ['artichokes', 'aubergines', 'carrots', 'fiddleheads', 'turnips']")
 
 # Task 18: Change the expression below so that the print statement displays
 # the list "vegetables" (defined above) in alphabetical order. (Use the "sort"
@@ -375,16 +375,19 @@ print("Expected output: ['artichokes', 'aubergines', 'carrots', 'fiddleheads', '
 
 # #------------------------------------------------------------------------
 
-# print("\n------")
-# print("Task 19: Modifying lists")
-# print("Expected output: ['artichokes', 'aubergines', 'carrots', 'fiddleheads', 'turnips','radishes']")
+print("\n------")
+print("Task 19: Modifying lists")
+print("Expected output: ['artichokes', 'aubergines', 'carrots', 'fiddleheads', 'turnips','radishes']")
 
-# # Task 19: Write a Python statement that adds a new item, "radishes", to the
-# # list "vegetables" (defined above). The print statement should display the updated
-# # list.
+# Task 19: Write a Python statement that adds a new item, "radishes", to the
+# list "vegetables" (defined above). The print statement should display the updated
+# list.
 
-# # write your statement here
-# print(vegetables)
+# write your statement here
+
+vegetables= ["artichokes", "aubergines", "carrots", "fiddleheads", "turnips"]
+vegetables.append("radishes")
+print(vegetables)
 
 # #------------------------------------------------------------------------
 
