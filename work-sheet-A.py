@@ -197,35 +197,42 @@
 # print(aStringSentenceAgain[start:end])
 
 
-# Awnser
-start = 12
-end = 17
-aStringSentenceAgain = "Did the cat jump out the window yesterday?"
-print(aStringSentenceAgain[start:end])
+# # Awnser
+# start = 12
+# end = 17
+# aStringSentenceAgain = "Did the cat jump out the window yesterday?"
+# print(aStringSentenceAgain[start:end])
 
 
 # #------------------------------------------------------------------------
 
-# print("\n------")
-# print("Task 11: Integers and strings")
-# print("Expected output: 100")
+print("\n------")
+print("Task 11: Integers and strings")
+print("Expected output: 100")
 
-# # Task 11: Modify the statement below so that it displays the number 100.
-# # Do this using the int() function (hint: you need to use it twice).
+# Task 11: Modify the statement below so that it displays the number 100.
+# Do this using the int() function (hint: you need to use it twice).
 
+# # Orignal
 # print("19" + "81")
+
+# # Awnser
+# print(int("19") + int("81"))
+
 # #------------------------------------------------------------------------
 
-# print("\n------")
-# print("Task 12: Conditions")
-# print("Expected output: test_var is less than 200")
+print("\n------")
+print("Task 12: Conditions")
+print("Expected output: test_var is less than 200")
 
-# # Task 12: Modify the code below to include a condition to print the statement  
-# # 'test_var is less than 200' for the current value of test_var. 
-# # Do not change the intial code, rather add to it
-# test_var = 90
-# if test_var > 200:	
-# 	print("test_var is greater than 200!")
+# Task 12: Modify the code below to include a condition to print the statement  
+# 'test_var is less than 200' for the current value of test_var. 
+# Do not change the intial code, rather add to it
+test_var = 90
+if test_var > 200:	
+	print("test_var is greater than 200!")
+	
+    
 # #------------------------------------------------------------------------
 
 # print("\n------")
