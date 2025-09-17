@@ -161,11 +161,11 @@
 # print(partLy.strip(  ).upper())
 
 
-#------------------------------------------------------------------------
+# #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 9: String indexing")
-print("Expected output: p")
+# print("\n------")
+# print("Task 9: String indexing")
+# print("Expected output: p")
 
 # Task 9: Modify the value assigned to variable "offset" below so that
 # the following "print" statement displays the letter "p".
@@ -182,17 +182,27 @@ print("Expected output: p")
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 10: String slices")
-print("Expected output: jump")
+# print("\n------")
+# print("Task 10: String slices")
+# print("Expected output: jump")
 
 # Task 10: Modify the values assigned to variables "start" and "end"
 # below so that the following "print" statement displays the word "jump".
 
-start = 0
-end = 10
+
+# # Original
+# start = 0
+# end = 10
+# aStringSentenceAgain = "Did the cat jump out the window yesterday?"
+# print(aStringSentenceAgain[start:end])
+
+
+# Awnser
+start = 12
+end = 17
 aStringSentenceAgain = "Did the cat jump out the window yesterday?"
 print(aStringSentenceAgain[start:end])
+
 
 # #------------------------------------------------------------------------
 
