@@ -292,17 +292,24 @@
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 15: List slices")
-print("Expected output: ['beta', 'gamma', 'delta']")
+# print("\n------")
+# print("Task 15: List slices")
+# print("Expected output: ['beta', 'gamma', 'delta']")
 
 # Task 15: Change the values of the variables "start" and "finish" below so that
 # the print statement displays the second through fourth items in the list
 # "greek" (defined above).
 
-start = 0
-finish = 6
-print(greek[start:finish])
+# #Original
+# start = 0
+# finish = 6
+# print(greek[start:finish])
+
+# #Awsner
+# start = 1
+# finish = 4
+# greek = ["alpha", "beta", "gamma", "delta", "epsilon"]
+# print(greek[start:finish])
 
 # #------------------------------------------------------------------------
 
