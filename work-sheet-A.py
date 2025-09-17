@@ -221,18 +221,27 @@ print("Expected output: 100")
 
 # #------------------------------------------------------------------------
 
-print("\n------")
-print("Task 12: Conditions")
-print("Expected output: test_var is less than 200")
+# print("\n------")
+# print("Task 12: Conditions")
+# print("Expected output: test_var is less than 200")
 
 # Task 12: Modify the code below to include a condition to print the statement  
 # 'test_var is less than 200' for the current value of test_var. 
 # Do not change the intial code, rather add to it
-test_var = 90
-if test_var > 200:	
-	print("test_var is greater than 200!")
-	
-    
+
+# #Original
+# test_var = 90
+# if test_var > 200:	
+# 	print("test_var is greater than 200!")  
+
+
+# #Awnser
+# test_var = 90
+# if test_var > 200:	
+# 	print("test_var is greater than 200!")  
+# else:	
+#     print("test_var is less than 200")  
+
 # #------------------------------------------------------------------------
 
 # print("\n------")
