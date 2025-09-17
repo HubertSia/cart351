@@ -106,16 +106,22 @@
 
 # #------------------------------------------------------------------------
 
-# print("\n------")
-# print("Task 6: Questions about strings, part 2")
-# print("Expected output: 25")
+print("\n------")
+print("Task 6: Questions about strings, part 2")
+print("Expected output: 25")
 
-# # Task 6: Inside the call to "print" below, write an expression that evaluates
-# # to the position of the word "window" in the string defined in the variable
-# # called "aStringSentence." Use the .find() method.
+# Task 6: Inside the call to "print" below, write an expression that evaluates
+# to the position of the word "window" in the string defined in the variable
+# called "aStringSentence." Use the .find() method.
 
+#Original
 # aStringSentence = "Did the cat jump out the window yesterday?"
 # print() # your code here!
+
+# #Awnser 
+# aStringSentence = "Did the cat jump out the window yesterday?"
+# print(aStringSentence.find("window")) # your code here!
+
 
 # #------------------------------------------------------------------------
 
@@ -123,12 +129,18 @@
 # print("Task 7: String transformations")
 # print("Expected output: someone who has spent too much time")
 
-# # Task 7: Modify the print statement below so that it prints out the contents
-# # of the variable "partLy", but with all white space removed from
-# # the beginning and end of the string. Use the .strip() method.
+# Task 7: Modify the print statement below so that it prints out the contents
+# of the variable "partLy", but with all white space removed from
+# the beginning and end of the string. Use the .strip() method.
 
+# #Original
 # partLy = "     someone who has spent too much time    \n"
 # print(partLy)
+
+# # Awnser
+# partLy = "     someone who has spent too much time    \n"
+# print(partLy.strip(  ))
+
 
 # #------------------------------------------------------------------------
 
