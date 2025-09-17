@@ -453,25 +453,25 @@ print(glue.join(parts))
 
 # #------------------------------------------------------------------------
 
-# print("\n------")
-# print("Task 23: All together now")
-# print("Expected output: alpha, beta, gamma, delta, epsilon, zeta, eta, theta")
+print("\n------")
+print("Task 23: All together now")
+print("Expected output: alpha, beta, gamma, delta, epsilon, zeta, eta, theta")
 
-# # Task 23: Make three changes on the Python code below, as follows: (1) replace
-# # [] with an expression that evaluates to a list with two items, "eta" and
-# # "theta" (using the .split() method). (2) Replace the word "pass" with a
-# # Python statement, so that the "for" loop has the effect of adding two new
-# # items to the list "greek" - recall it was defined above - but we redefine it below:). 
-# # (Use the .append() method.) (3) Change the value
-# # of the variable "glue" so that the desired output is displayed.
+# Task 23: Make three changes on the Python code below, as follows: (1) replace
+# [] with an expression that evaluates to a list with two items, "eta" and
+# "theta" (using the .split() method). (2) Replace the word "pass" with a
+# Python statement, so that the "for" loop has the effect of adding two new
+# items to the list "greek" - recall it was defined above - but we redefine it below:). 
+# (Use the .append() method.) (3) Change the value
+# of the variable "glue" so that the desired output is displayed.
 
-# greek = ["alpha", "beta", "gamma", "delta", "epsilon","zeta"]
-# new_letters = "eta theta"
-# new_letters_list = [] # <-- replace this
+greek = ["alpha", "beta", "gamma", "delta", "epsilon","zeta"]
+new_letters = "eta theta"
+new_letters_list = new_letters.split() # <-- replace this
 
-# for letter_name in new_letters_list:
-# 	pass # <-- and replace this
+for letter_name in new_letters_list:
+	greek.append(letter_name) # <-- and replace this
 
-# glue = "?" # <-- and replace this
+glue = ", " # <-- and replace this
 
-# print(glue.join(greek))
+print(glue.join(greek))
