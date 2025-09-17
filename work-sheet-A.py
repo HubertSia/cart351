@@ -356,15 +356,22 @@
 
 # #------------------------------------------------------------------------
 
-# print("\n------")
-# print("Task 18: List operations, part 2")
-# print("Expected output: ['artichokes', 'aubergines', 'carrots', 'fiddleheads', 'turnips']")
+print("\n------")
+print("Task 18: List operations, part 2")
+print("Expected output: ['artichokes', 'aubergines', 'carrots', 'fiddleheads', 'turnips']")
 
-# # Task 18: Change the expression below so that the print statement displays
-# # the list "vegetables" (defined above) in alphabetical order. (Use the "sort"
-# # function.
+# Task 18: Change the expression below so that the print statement displays
+# the list "vegetables" (defined above) in alphabetical order. (Use the "sort"
+# function.
 
+# #Original
 # print(vegetables)
+
+# #Awnser
+# vegetables= ["aubergines", "carrots", "turnips", "fiddleheads", "artichokes"]
+# vegetables.sort()
+# print(vegetables)
+
 
 # #------------------------------------------------------------------------
 
