@@ -145,3 +145,10 @@ dom_pol_value = iaqi[dom_pol]['v']
 
 print(f"\nDominant pollutant '{dom_pol}' has value: {dom_pol_value}")
 
+
+
+# Getting the dominant pollutant for different cities is like playing detective with the air. First, you ask the Search API: 
+# “Hey, who are the suspects (stations) in this city?” — and it hands you their UIDs. 
+# Next, you interrogate each suspect with the Feed API: “Alright, who’s messing up the air here?” The station spills the beans: 
+# “It was pm25 all along!” Then you check its rap sheet in iaqi to see exactly how bad it’s been misbehaving. 
+# Repeat the routine city by city, and you end up with a “Most Wanted Pollutants” list across the world.
