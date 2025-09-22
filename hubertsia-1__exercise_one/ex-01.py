@@ -1,3 +1,5 @@
+## PART 4 --------------------------------------
+
 #import the library
 import requests
 
@@ -23,8 +25,8 @@ print(results)
 print(type(results))
 # # in the following print, 'result' return as a <class 'dict'>. Wich means the the API is using 'dictionnairy' to store data
 
-##-------
 
+#### PART 5 ---------------------------------------------------------------------
 
 # # Checking the KEYS of 'results'
 print(results.keys())
@@ -106,6 +108,8 @@ for item in responseData:
 
 
 
+#### PART 6 ---------------------------------------------------------------------
+
 # 1. Making a feed request for a specific station with uid=5468
 url_feed = "https://api.waqi.info/feed/@5468"
 response_feed = requests.get(url_feed, params={"token": token})
@@ -146,6 +150,8 @@ dom_pol_value = iaqi[dom_pol]['v']
 print(f"\nDominant pollutant '{dom_pol}' has value: {dom_pol_value}")
 
 
+
+#### PART 7 ---------------------------------------------------------------------
 
 # Getting the dominant pollutant for different cities is like playing detective with the air. First, you ask the Search API: 
 # “Hey, who are the suspects (stations) in this city?” — and it hands you their UIDs. 
