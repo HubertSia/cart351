@@ -189,13 +189,13 @@ def main():
             except Exception as e:
                 slow_print(Fore.RED + f"Error revealing last data: {e}" + Style.RESET_ALL)
             return
-        # ===== END OF NEW SECTION =====
         
         
             #---- If Air quality good, players lives
         else:
             print(Fore.GREEN + pyfiglet.figlet_format("CLICK") + Style.RESET_ALL)
             slow_print("An empty chamber. Fate spares you this time.\n")
+            print(Fore.GREEN + pyfiglet.figlet_format("CONGRATS YOU LIVE :D!") + Style.RESET_ALL)
 
 
         # ---- Basic air data
