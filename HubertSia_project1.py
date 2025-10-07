@@ -14,18 +14,18 @@ import sys
 import pyfiglet
 from colorama import Fore, Style
 
+# ------ Import os for environment variables (for safer token handling)
+import os
 
 # Here's the token, good luck = 9f5591303c3efa6baaf56bc26791691ee5d39588
 
 # Dont know what city to take go to = https://aqicn.org/city/montreal/
 
-
 # =====  The engine for the suspense and visual display ===========
 
 # --- Cinematic typewriter output
 def slow_print(text, delay=0.05, newline=True):
-
-#----- Prints text character by character with optional delay and newline.
+    #----- Prints text character by character with optional delay and newline.
     for c in text:
         sys.stdout.write(c)
         sys.stdout.flush()
@@ -33,10 +33,10 @@ def slow_print(text, delay=0.05, newline=True):
     if newline:
         print()
 
+
 # ---  The thinking engine
 def suspense_dots(msg="Thinking"):
-    
-#------- Prints a suspense-building message with a three-dot animation
+    #------- Prints a suspense-building message with a three-dot animation
     slow_print(msg, delay=0.05, newline=False)
     for _ in range(3):
         time.sleep(0.6)
@@ -47,36 +47,22 @@ def suspense_dots(msg="Thinking"):
 
 # ===== Shooot the api ======
 def get_aqi(city, token):
-
-# ----- Fetch the api
+    # ----- Fetch the api
     url = f"https://api.waqi.info/feed/{city}/?token={token}"
     response = requests.get(url, timeout=10)
-    response.raise_for_status()  
+    response.raise_for_status()
     return response.json()
 
 
-
 def interpret_aqi(aqi):
-
     #---- All the comments that shows depending on the level air quality of the city
-    if aqi <= 10:
+    if aqi <= 101:
         return "The air is pure and forgiving. You breathe gently into survival :D"
-    elif aqi <= 50:
-        return "The air holds a weight. You live, but uneasily... "
-    elif aqi <= 100:
-        return "The haze thickens. Each breath reminds you of chance"
-    elif aqi <= 150:
-        return "The air burns... survival feels like borrowed time"
-    else:
-        return "Toxic fog engulfs you. Each breath is a wager you may lose X_X"
-
 
 
 # ===== Pick or randomize =====
-
-# --- Function picks a random real city using WAQI’s geo coordinates API   
+# --- Function picks a random real city using WAQI’s geo coordinates API
 def random_city_from_api(token):
-
     # Try multiple times in case certain random coordinates fail
     for _ in range(5):
         # Generate random coordinates globally
@@ -86,8 +72,8 @@ def random_city_from_api(token):
         # Build API URL with geo coordinates as city replacement
         url = f"https://api.waqi.info/feed/geo:{lat:.2f};{lon:.2f}/?token={token}"
 
-        # Response time for the request
         try:
+            # Response time for the request
             response = requests.get(url, timeout=10)
             data = response.json()
             if data.get("status") == "ok":
@@ -102,7 +88,6 @@ def random_city_from_api(token):
                 )
                 return city_name
         except requests.RequestException:
-          
             # If there’s a connection or timeout error, just loop again
             pass
 
@@ -110,16 +95,12 @@ def random_city_from_api(token):
     return "montreal"
 
 
-
-
 # ===== The main game that's going in the terminal =======
 def main():
-    
     # --- Prints the title and the color
     print(Fore.CYAN + pyfiglet.figlet_format("Air Quality Roulette") + Style.RESET_ALL)
 
-
-    # ===== This the menu =====
+    # ===== The menu =====
     # Choice of picking a city or pick a random city
     print("\nWhere will fate find you today?")
     print("1. Enter your own city")
@@ -127,22 +108,22 @@ def main():
 
     choice = input("\nSelect option (1 or 2): ").strip()
 
+    # === Token access (safer) ===
+    # Prefer environment variable or prompt fallback
+    token = os.getenv("WAQI_TOKEN")
+    if not token:
+        token = input("\nEnter your WAQI Token (9f5591303c3efa6baaf56bc26791691ee5d39588): ").strip()
+
     # If user pick "2", start the randomizer
     if choice == "2":
         suspense_dots("Spinning the globe")
-        # Enter the API and assign in token and assign the randomizer to the city 
-        token = input("Enter your Token: ").strip()
         city = random_city_from_api(token)
     else:
         city = input("Enter your city: ").strip()
-        token = input("Enter your WAQI Token: ").strip()
-
 
     # ------Try fetching AQI
     try:
         data = get_aqi(city, token)
-    
-    # In case of error
     except Exception as e:
         slow_print(Fore.RED + f"Error fetching data: {e}" + Style.RESET_ALL)
         return
@@ -160,17 +141,7 @@ def main():
     chamber = random.randint(1, 6)
 
     #==== Fate decision ======
-    
-    #----If toxic, user is ded
-    if chamber == 1:
-        print(Fore.RED + pyfiglet.figlet_format("BANG!") + Style.RESET_ALL)
-        slow_print("The chamber fires. Your forecast dies with you...")
-        return
-    
-    #---- If Air quality good, players lives
-    else:
-        print(Fore.GREEN + pyfiglet.figlet_format("CLICK") + Style.RESET_ALL)
-        slow_print("An empty chamber. Fate spares you this time.\n")
+
 
     # ----- Extract AQI data for the results
     try:
@@ -180,13 +151,54 @@ def main():
         iaqi = data_block.get("iaqi", {})
 
         # ===== The game over status  =====
-        # If the air quality is above 150, it is a game over
-        if isinstance(aqi, int) and aqi > 150:
+        # If the air quality is above 101, it is a game over
+        if isinstance(aqi, int) and aqi > 101:
             print(Fore.RED + pyfiglet.figlet_format("BANG!") + Style.RESET_ALL)
-            slow_print("The toxic air fills your lungs... The world fades to gray.")
-            slow_print("Fate didn’t need the revolver this time — the air made its move.")
-            return
+            slow_print("The toxic air fills your lungs... The world fades to gray")
+            slow_print("Fate didn’t need the revolver this time... The air made its move")
+            print(Fore.RED + pyfiglet.figlet_format("YOU DIED X_X !") + Style.RESET_ALL)
 
+            try:
+                data_block = data["data"]
+                aqi = data_block.get("aqi", "unknown")
+                dom = data_block.get("dominentpol", "unknown")
+                iaqi = data_block.get("iaqi", {})
+
+                slow_print(f"City: {data_block['city']['name']}")
+                slow_print(f"Air Quality Index: {aqi}")
+                slow_print(f"Dominant pollutant: {dom.upper()}")
+
+                if "pm25" in iaqi:
+                    slow_print(f"PM2.5 level: {iaqi['pm25']['v']}")
+                if "t" in iaqi:
+                    slow_print(f"Temperature: {iaqi['t']['v']}°C")
+                if "h" in iaqi:
+                    slow_print(f"Humidity: {iaqi['h']['v']}%")
+
+                if isinstance(aqi, int):
+                    slow_print("\nFinal Interpretation:\n" + interpret_aqi(aqi))
+                else:
+                    slow_print("\nNo valid AQI value to interpret.")
+
+                slow_print(
+                    Fore.RED
+                    + "\nYou did not survive... but now you know why."
+                    + Style.RESET_ALL
+                )
+
+            except Exception as e:
+                slow_print(Fore.RED + f"Error revealing last data: {e}" + Style.RESET_ALL)
+            return
+        # ===== END OF NEW SECTION =====
+        
+        
+            #---- If Air quality good, players lives
+        else:
+            print(Fore.GREEN + pyfiglet.figlet_format("CLICK") + Style.RESET_ALL)
+            slow_print("An empty chamber. Fate spares you this time.\n")
+
+
+        # ---- Basic air data
         slow_print(f"City: {data_block['city']['name']}")
         slow_print(f"Air Quality Index: {aqi}")
         slow_print(f"Dominant pollutant: {dom.upper()}")
@@ -220,9 +232,17 @@ def main():
 
         slow_print("\nYou live... but the air decides for how long.\n")
 
+        # --- Optional replay
+        replay = input("Spin the globe again? (y/n): ").strip().lower()
+        if replay == "y":
+            main()
+        else:
+            slow_print("The curtain falls. The air still lingers...")
+
     except Exception as e:
         slow_print(Fore.RED + f"Error while interpreting data: {e}" + Style.RESET_ALL)
 
 
+# ===== Main Guard =====
 if __name__ == "__main__":
     main()
