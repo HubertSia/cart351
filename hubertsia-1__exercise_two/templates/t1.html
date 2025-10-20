@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="donut-page">
+    <h1>Welcome to the {{ the_topic|capitalize }} Page!</h1>
+
+    <p>
+        We currently have <strong>{{ number_of_donuts }}</strong> {{ the_topic }}
+        ready for you to enjoy!
+    </p>
+
+    {% if number_of_donuts > 0 %}
+    <img src="{{ url_for('static', filename='images/donut_a.png') }}" alt="donuts" width="350" />
+    <p>Check out what we have today</p>
+    {% else %}
+    <p>Sorry, we’ve sold out of {{the_topic}}!</p>
+    {% endif %}
+
+    <div class="donut-lists">
+        <div class="list-box">
+            <h2>Flavours</h2>
+            <ul>
+                {% for flavour in donut_data.flavours %}
+                <li>{{flavour}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="list-box">
+            <h2>Toppings</h2>
+            <ul>
+                {% for topping in donut_data.toppings %}
+                <li>{{topping}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="list-box">
+            <h2>Ice Cream Pairings</h2>
+            <ol>
+                {% for flavor in icecream_flavors %}
+                <li>{{flavor}}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</section>
+{% endblock %}

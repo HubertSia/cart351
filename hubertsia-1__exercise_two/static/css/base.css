@@ -49,3 +49,47 @@ footer{
        color: rgb(255,255,255);
 
 }
+
+
+.form-section,
+.thank-you {
+    background-color: #fff8e6;
+    padding: 20px;
+    border-radius: 12px;
+    width: 60%;
+    margin: 30px auto;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+button,
+.btn {
+    background-color: #e38b06;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #c97705;
+}
+
+.result-box {
+    background: #fff;
+    border: 2px solid #e38b06;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px auto;
+    width: 80%;
+    font-weight: bold;
+}

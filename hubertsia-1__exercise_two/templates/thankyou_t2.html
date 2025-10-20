@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="thank-you">
+    <h1>Thank You for Your Submission!</h1>
+
+    <p>Here’s your message with vowels replaced by asterisks:</p>
+
+    <div class="result-box">
+        <p>{{ final_text }}</p>
+    </div>
+
+    <a href="{{url_for('t2')}}" class="btn">Back to Form</a>
+</section>
+{% endblock %}
