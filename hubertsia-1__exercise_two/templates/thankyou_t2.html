@@ -2,14 +2,18 @@
 
 {% block content %}
 <section class="thank-you">
+    
+<!-- Confirmation message -->
     <h1>Thank You for Your Submission!</h1>
 
     <p>Here’s your message with vowels replaced by asterisks:</p>
 
+<!-- Display processed text passed from Flask -->
     <div class="result-box">
         <p>{{ final_text }}</p>
     </div>
 
+<!-- Link back to the form page -->
     <a href="{{url_for('t2')}}" class="btn">Back to Form</a>
 </section>
 {% endblock %}

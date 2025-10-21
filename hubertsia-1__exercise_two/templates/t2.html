@@ -2,20 +2,27 @@
 
 {% block content %}
 <section class="form-section">
+    
+<!-- Simple contact form -->
     <h1>Contact Form</h1>
     <p>Please fill out the form below and submit.</p>
 
+    <!-- Form sends data using GET request -->
     <form method="get" action="{{url_for('thank_you_t2')}}">
+        
+        <!-- Name -->
         <div class="form-group">
             <label for="name">Your Name:</label><br />
             <input type="text" id="name" name="name" required />
         </div>
 
+        <!-- Favorite food -->
         <div class="form-group">
             <label for="subject">Tell me your favorite fod:</label><br />
             <input type="text" id="subject" name="subject" required />
         </div>
 
+        <!-- Message -->
         <div class="form-group">
             <label for="message">Your Message:</label><br />
             <textarea id="message" name="message" rows="4" cols="40" required></textarea>

@@ -2,13 +2,17 @@
 
 {% block content %}
 <section class="donut-page">
+    
+    <!-- Display dynamic heading -->
     <h1>Welcome to the {{ the_topic|capitalize }} Page!</h1>
 
+    <!-- Show count of donuts dynamically -->
     <p>
         We currently have <strong>{{ number_of_donuts }}</strong> {{ the_topic }}
         ready for you to enjoy!
     </p>
 
+    <!-- Conditional image rendering -->
     {% if number_of_donuts > 0 %}
     <img src="{{ url_for('static', filename='images/donut_a.png') }}" alt="donuts" width="350" />
     <p>Check out what we have today</p>
@@ -16,8 +20,13 @@
     <p>Sorry, we’ve sold out of {{the_topic}}!</p>
     {% endif %}
 
+    
+    <!-- Lists generated using loops -->
     <div class="donut-lists">
         <div class="list-box">
+            
+            
+        <!-- For flavours -->
             <h2>Flavours</h2>
             <ul>
                 {% for flavour in donut_data.flavours %}
@@ -25,7 +34,8 @@
                 {% endfor %}
             </ul>
         </div>
-
+        
+    <!-- Toppings -->
         <div class="list-box">
             <h2>Toppings</h2>
             <ul>
@@ -34,7 +44,8 @@
                 {% endfor %}
             </ul>
         </div>
-
+        
+    <!-- Ice cream -->
         <div class="list-box">
             <h2>Ice Cream Pairings</h2>
             <ol>
