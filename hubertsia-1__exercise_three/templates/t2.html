@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2> Express Yourself with Particles!</h2>
+    <p>Move your mouse in the area below to create glowing energy trails.</p>
+
+    <canvas id="particleCanvas" width="500" height="400"></canvas>
+
+    <input type="text" id="thought" placeholder="What's on your mind?" />
+    <button id="sendBtn">Send it</button>
+
+    <div id="responseMsg" class="hidden"></div>
+</div>
+
+<!-- External JS and CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+{% endblock %}
