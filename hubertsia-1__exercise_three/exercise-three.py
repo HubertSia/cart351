@@ -1,9 +1,14 @@
+# Import the Flask, OS and datetime library
 from flask import Flask, render_template, request, jsonify
 import os
+
+# Source code from https://docs.python.org/3/library/datetime.html
 from datetime import datetime
 
+# The app
 app = Flask(__name__)
 
+# Create a path app for our folder
 UPLOAD_FOLDER = "static/uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  
@@ -14,12 +19,12 @@ def index():
     return render_template("index.html")
 
 
-# Task 3
+# ==== Starting the Task 3
 @app.route("/t2")
 def t2():
     return render_template("t2.html")
 
-
+# Fetch the data
 @app.route("/postDataFetch", methods=["POST"])
 def postDataFetch():
     
@@ -29,12 +34,16 @@ def postDataFetch():
         # Fallback in case of form or other input types
         data = request.form.to_dict(flat=True)
 
-    # Setup file path
+    # Setup file path to data.txt
     file_path = os.path.join("files", "data.txt")
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    
 
+    # Getting the color for the data, message and timestamp
     color = data.get("color", "n/a")
     message = data.get("message", "no message")
+    
+    # For the one we're taking the time data of the year, month, day, hour, minute and second in real-time (depending on the localhost computer)
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # Save to file
