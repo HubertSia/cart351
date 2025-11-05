@@ -1,10 +1,23 @@
+// Set the canvas
 const canvas = document.getElementById("particleCanvas");
+
+// The particle is 2D
 const ctx = canvas.getContext("2d");
+
+// Our pop up message
 const responseMsg = document.getElementById("responseMsg");
+
+// Our button sent
 const sendBtn = document.getElementById("sendBtn");
+
+// Storing our particle system string
 let particles = [];
+
+// The chosen color
 let chosenColor = "#ffffff";
 
+// --- (You already probably used to it by now)
+// --- Setting up our particcle system, XY position, the size, death time, color, ect...
 class Particle {
   constructor(x, y, color) {
     this.x = x;
@@ -16,6 +29,7 @@ class Particle {
     this.life = 100;
   }
 
+  // --- Constantly updating the particle positon in real time
   update() {
     this.x += this.vx;
     this.y += this.vy;
@@ -23,6 +37,7 @@ class Particle {
     this.radius *= 0.97;
   }
 
+  // We're stylizing our particle system, the trails and is movements
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -33,6 +48,7 @@ class Particle {
   }
 }
 
+// Animating our particle system dynamically in our canavas
 function animate() {
   ctx.fillStyle = "rgba(0,0,0,0.15)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -46,6 +62,7 @@ function animate() {
 
 animate();
 
+// --- Our particle will only move with mouse inside the canvas
 canvas.addEventListener("mousemove", (e) => {
   const rect = canvas.getBoundingClientRect();
   const x = e.clientX - rect.left;
@@ -60,19 +77,25 @@ canvas.addEventListener("mousemove", (e) => {
   }
 });
 
+
+// Setting up our button system
 sendBtn.addEventListener("click", async () => {
   const thought = document.getElementById("thought").value.trim();
+  
+  // If thoughts is missing, warn the user
   if (!thought) {
     alert("Please enter a thought first!");
     return;
   }
-
+  
+// --- This is we're we sent our data to our .py to the data.txt
   const payload = {
     color: chosenColor,
     message: thought,
     timestamp: new Date().toISOString(),
   };
 
+  // -- Initialize the fetch data to our .json
   const res = await fetch("/postDataFetch", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -81,6 +104,7 @@ sendBtn.addEventListener("click", async () => {
 
   const result = await res.json();
 
+  // Sending the data the data that is presenting in the canvas 
   responseMsg.textContent = result.message;
   responseMsg.style.background = chosenColor;
   responseMsg.style.color = "#fff";
