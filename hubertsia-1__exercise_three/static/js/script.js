@@ -16,7 +16,7 @@ let particles = [];
 // The chosen color
 let chosenColor = "#ffffff";
 
-// --- (You already probably used to it by now)
+// --- (You already probably seen more then once by now XD)
 // --- Setting up our particcle system, XY position, the size, death time, color, ect...
 class Particle {
   constructor(x, y, color) {
