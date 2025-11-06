@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Collective Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Collective Choices So Far</h1>
+        <div id="results">
+            {% for path, value in data.items() %}
+            <p>
+                {{ path.capitalize() }}: <strong>{{ value }}</strong>
+            </p>
+            {% endfor %}
+        </div>
+
+        <button id="refresh">Refresh Results</button>
+        <a href="/">← Return to Story</a>
+    </div>
+
+    <script>
+        document
+            .getElementById("refresh")
+            .addEventListener("click", () => location.reload());
+    </script>
+</body>
+
+</html>
