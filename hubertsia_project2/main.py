@@ -36,11 +36,11 @@ def index():
 
 
 
-@app.route("/scene")
+@app.route("/results")
 def results():
     """Render current collective data view"""
     data = load_data()
-    return render_template("scene.html", data=data)
+    return render_template("results.html", data=data)
 
 
 
