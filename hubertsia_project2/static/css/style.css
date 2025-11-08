@@ -38,3 +38,14 @@ a {
 .results-link {
     font-weight: bold;
 }
+
+
+body.forest-mode {
+    background: linear-gradient(#c8e6c9, #a5d6a7);
+    transition: background 1s ease;
+}
+
+body.village-mode {
+    background: linear-gradient(#ffe0b2, #ffcc80);
+    transition: background 1s ease;
+}
