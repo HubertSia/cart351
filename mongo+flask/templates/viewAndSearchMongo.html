@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block scriptblock %}
+<script src="{{ url_for('static', filename='js/script_search.js') }}"></script>
+{% endblock %}
+{% block content %}
+<div class="searchFormContainer">
+    <h1>SEARCH & VIEW</h1>
+    <form id="searchForm">
+        <p>
+            Search By Plant:
+            <input type="text" name="a_search" id="a_search" required />
+            <input type="submit" value="submit my info" id="buttonSearch" />
+        </p>
+    </form>
+</div>
+<div id="result"></div>
+{% endblock %}

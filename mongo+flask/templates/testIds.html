@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<p>TEST INSERT:: the returned ID's</p>
+{% if session['ids'] %}
+<ul>
+    {% for el in session['ids'] %}
+    <li>{{el}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

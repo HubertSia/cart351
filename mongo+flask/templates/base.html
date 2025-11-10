@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+    <title>CART 351 Flask Mongo</title>
+    {% block scriptblock %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <h2>CART 351 Flask Mongo</h2>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>Footer info</footer>
+</body>
+
+</html>
