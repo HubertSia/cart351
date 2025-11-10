@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>The Dark Forest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body class="forest-mode">
+    <div class="container">
+        <h1>You venture into the Forest</h1>
+        <p>The trees whisper around you… shadows flicker between the trunks.</p>
+        <div class="choices">
+            <button id="follow-sound">Follow the strange sound</button>
+            <button id="return">Return to the crossroads</button>
+        </div>
+        <a href="/results">View Collective Choices →</a>
+    </div>
+
+    <script>
+        document.getElementById("return").onclick = () => location.href = "/";
+    </script>
+</body>
+
+</html>

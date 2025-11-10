@@ -52,6 +52,15 @@ def submit_choice():
 def get_data():
     return jsonify(load_data())
 
+@app.route("/forest")
+def forest():
+    return render_template("forest.html")
+
+
+@app.route("/village")
+def village():
+    return render_template("village.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
