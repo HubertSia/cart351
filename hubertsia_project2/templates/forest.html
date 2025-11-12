@@ -46,20 +46,7 @@
         <a href="/results">View Collective Choices →</a>
     </div>
 
-    <script>
-        document.getElementById("return").onclick = () => (location.href = "/");
 
-        document.getElementById("follow-sound").onclick = () => {
-            fetch("/submit_choice", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ choice: "investigate" }),
-            })
-                .then((res) => res.json())
-                .then(() => (location.href = "/forest_investigate"))
-                .catch((err) => console.error(err));
-        };
-    </script>
 </body>
 
 </html>

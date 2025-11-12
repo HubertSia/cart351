@@ -39,6 +39,21 @@ a {
     font-weight: bold;
 }
 
+.tavern_whisper {
+    font-style: italic;
+    color: #8d6e63;
+    opacity: 0.8;
+    margin-top: 12px;
+}
+
+
+.forest_whisper {
+    font-style: italic;
+    color: #2e7d32;
+    opacity: 0.8;
+    margin-top: 12px;
+}
+
 
 body.forest-mode {
     background: linear-gradient(#c8e6c9, #a5d6a7);
