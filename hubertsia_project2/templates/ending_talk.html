@@ -1,28 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}Ending — The Drunken Adventurer{% endblock %}
+{% block mode %}village-mode{% endblock %}
+{% block header %}Ending — The Drunken Adventurer{% endblock %}
 
-<head>
-    <meta charset="UTF-8" />
-    <title>Ending — The Drunken Adventurer</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</head>
-
+{% block content %}
 <body class="village-mode">
-    <div class="container">
-        <h1>Ending — The Drunken Adventurer</h1>
-        <p>
-            You stride over and ask them to quiet down. One glare later, the entire tavern freezes —
-            and then they scatter. Everyone stares at you in awe.
-        </p>
-        <p>
-            You grin, take a triumphant sip... and realize your drink was much stronger than you thought.
-            The world tilts sideways.
-        </p>
-        <p class="whisper">Maybe you overdid it... again.</p>
-        <button id="return">Return to Crossroads</button>
-    </div>
-
+<p>
+    You stride over and ask them to quiet down. One glare later, the entire tavern
+    freezes — and then they scatter. Everyone stares at you in awe.
+</p>
+<p>
+    You grin, take a triumphant sip... and realize your drink was much stronger
+    than you thought. The world tilts sideways.
+</p>
+<p class="whisper">Maybe you overdid it... again.</p>
+<button id="return">Return to Crossroads</button>
 </body>
-
-</html>
+{% endblock %}

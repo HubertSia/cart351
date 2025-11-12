@@ -1,33 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}Forest — A Fatal Mistake{% endblock %}
+{% block mode %}forest-mode{% endblock %}
+{% block header %}Ending — You're Dead{% endblock %}
 
-<head>
-    <meta charset="UTF-8" />
-    <title>Forest — A Fatal Mistake</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</head>
+{% block content %}
+<p>
+    You step forward, waving your arms. The wolf lunges before you can scream. The
+    forest blurs — your heartbeat thunders in your ears.
+</p>
+<p>
+    For a moment, the trees watch silently. The forest does not forgive fear.
+</p>
 
-<body class="forest-mode">
-    <div class="container">
-        <h1> Ending -  YOU'RE DEAD</h1>
-        <p>
-            You step forward, waving your arms. The wolf lunges before you even
-            scream. The forest blurs — your heartbeat thunders in your ears.
-        </p>
-        <p>
-            For a moment, the trees watch silently. The forest does not forgive
-            fear.
-        </p>
+<p class="whisper">
+    Some say the wolf still prowls the clearing, guarding those it felled.
+</p>
 
-        <p class="whisper">
-            Some say the wolf still prowls the clearing, guarding those it felled.
-        </p>
-
-        <button id="return">Return to Crossroads</button>
-    </div>
-
-
-</body>
-
-</html>
+<button id="return">Return to Crossroads</button>
+{% endblock %}

@@ -1,33 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}Ending — Man’s Best Friend{% endblock %}
+{% block mode %}forest-mode{% endblock %}
+{% block header %}Ending — Man’s Best Friend{% endblock %}
 
-<head>
-    <meta charset="UTF-8" />
-    <title>Tamed Companion</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</head>
+{% block content %}
+<p>
+    You kneel, offering the cheese with trembling hands. The wolf hesitates, then
+    steps forward, eyes softening. His rough tongue brushes your palm.
+</p>
+<p>
+    The forest seems to exhale — branches ease, quiet returns. The wolf follows
+    you, padding softly at your side.
+</p>
 
-<body class="forest-mode">
-    <div class="container">
-        <h1>Ending - Man's best friend</h1>
-        <p>
-            You kneel, offering the cheese with trembling hands. The wolf hesitates,
-            then steps forward, eyes softening. His rough tongue brushes your palm.
-        </p>
-        <p>
-            The forest seems to exhale — branches ease, quiet returns. The wolf
-            follows you, padding softly at your side.
-        </p>
+<p class="whisper">
+    They say many have found peace here,
+    <em>but only those who offered kindness left with company.</em>
+</p>
 
-        <p class="whisper">
-            They say many have found peace here,
-            <em>but only those who offered kindness left with company.</em>
-        </p>
-
-        <button id="return">Return to Crossroads</button>
-    </div>
-
-</body>
-
-</html>
+<button id="return">Return to Crossroads</button>
+{% endblock %}

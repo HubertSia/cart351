@@ -1,33 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8" />
-    <title>The Tavern Trouble</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% block title %}The Tavern Trouble{% endblock %}
+{% block mode %}village-mode{% endblock %}
+{% block header %}The Tavern{% endblock %}
 
-</head>
-
+{% block content %}
 <body class="village-mode">
-    <div class="container">
-        <h1>The Tavern</h1>
-        <p>
-            The tavern is warm and bright. You take a seat and enjoy your drink. Before long,
-            a group of rough-looking ruffians start making a scene.
-        </p>
-        <p class="tavern_whisper">What do you do?</p>
 
-        <div class="choices">
-            <button id="walk-home">Walk away</button>
-            <button id="talk-them">Talk to them</button>
-            <button id="throw-something">Throw something?</button>
-        </div>
+<p>
+    The tavern is warm and bright. You take a seat and enjoy your drink. Before long,
+    a group of rough-looking ruffians start making a scene.
+</p>
+<p class="tavern_whisper">What do you do?</p>
 
-        <a href="/results">View Collective Choices →</a>
-    </div>
-
-    
+<div class="choices">
+    <button id="walk-home">Walk away</button>
+    <button id="talk-them">Talk to them</button>
+    <button id="throw-something">Throw something?</button>
+</div>
 </body>
-
-</html>
+{% endblock %}

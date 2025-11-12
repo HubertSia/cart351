@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}The Quiet Village{% endblock %}
+{% block mode %}village-mode{% endblock %}
+{% block header %}You arrive at the Village{% endblock %}
 
-<head>
-    <meta charset="UTF-8" />
-    <title>The Quiet Village</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</head>
-
+{% block content %}
 <body class="village-mode">
-    <div class="container">
-        <h1>You arrive at the Village</h1>
-        <p>Lanterns glow softly. A tavern hums with muffled laughter.</p>
-        <div class="choices">
-            <button id="enter-tavern">Enter the tavern</button>
-            <button id="return">Return to the crossroads</button>
-        </div>
-        <a href="/results">View Collective Choices →</a>
-    </div>
-
-
+<p>Lanterns glow softly. A tavern hums with muffled laughter.</p>
+<div class="choices">
+    <button id="enter-tavern">Enter the tavern</button>
+    <button id="return">Return to the crossroads</button>
+</div>
 </body>
-
-</html>
+{% endblock %}

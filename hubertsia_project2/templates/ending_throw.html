@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}Ending — A Cheesy Evening{% endblock %}
+{% block mode %}village-mode{% endblock %}
+{% block header %}Ending — A Cheesy Evening{% endblock %}
 
-<head>
-    <meta charset="UTF-8" />
-    <title>Ending — Cheesy Hero</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</head>
-
+{% block content %}
 <body class="village-mode">
-    <div class="container">
-        <h1>Ending — A Cheesy Evening</h1>
-        <p>
-            You throw a block of cheese at the ringleader. Silence falls — and then laughter erupts.
-            Turns out, they really like cheese! You successfully win everyone over and are treated
-            to a peaceful night in the tavern.
-        </p>
-        <p class="whisper">You’ve earned your rest... and some extra cheese.</p>
-        <button id="return">Return to Crossroads</button>
-    </div>
-
+<p>
+    You throw a block of cheese at the ringleader. Silence falls — and then
+    laughter erupts. Turns out, they really like cheese! You successfully win
+    everyone over and are treated to a peaceful night in the tavern.
+</p>
+<p class="whisper">You’ve earned your rest... and some extra cheese.</p>
+<button id="return">Return to Crossroads</button>
 </body>
-
-</html>
+{% endblock %}

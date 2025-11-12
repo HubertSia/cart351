@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}The Collective Adventure{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+
+    <div class="container">
+        <header>
+            <h1>{% block header %}{% endblock %}</h1>
+        </header>
+
+        <main>
+            {% block content %}
+            <!-- Main page content will go here -->
+            {% endblock %}
+        </main>
+
+      
+    </div>
+
+</html>

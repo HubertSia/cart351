@@ -1,29 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}The Collective Adventure{% endblock %}
+{% block header %}The Collective Adventure{% endblock %}
 
-<head>
-    <meta charset="UTF-8" />
-    <title>The Collective Adventure</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</head>
+{% block content %}
+<p>
+    You stand at a crossroads. Ahead lies a dark <strong>forest</strong> to the
+    left, and a quiet <strong>village</strong> to the right.
+</p>
 
-<body>
-    <div class="container">
-        <h1>The Collective Adventure</h1>
-        <p>
-            You stand at a crossroads. Ahead lies a dark <strong>forest</strong> to the
-            left, and a quiet <strong>village</strong> to the right.
-        </p>
-
-        <div class="choices">
-            <button id="forest">Enter the Forest</button>
-            <button id="village">Go to the Village</button>
-        </div>
-
-        <a href="/results" class="results-link">View Collective Choices →</a>
-    </div>
-
-</body>
-
-</html>
+<div class="choices">
+    <button id="forest">Enter the Forest</button>
+    <button id="village">Go to the Village</button>
+</div>
+{% endblock %}
