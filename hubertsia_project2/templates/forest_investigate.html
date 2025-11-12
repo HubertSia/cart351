@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>The Forest — Investigation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <style>
+    .whisper {
+      font-style: italic;
+      color: #2e7d32;
+      opacity: 0.8;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body class="forest-mode">
+  <div class="container">
+    <h1>The Clearing</h1>
+    <p>
+      In a small clearing, a wild wolf stares back at you. Its eyes gleam. It
+      lowers itself, teeth bared — it thinks you're a threat.
+    </p>
+
+    {% set total_investigate = data.get('investigate', 0) %}
+    {% if total_investigate > 3 %}
+    <p class="whisper">
+      The air feels haunted — {{ total_investigate }} travelers have reached
+      this same clearing.
+    </p>
+    {% else %}
+    <p class="whisper">
+      The wolf watches quietly, as if you were the first to arrive.
+    </p>
+    {% endif %}
+
+    <div class="choices">
+      <button id="tame_wolf">Tame it with cheese?</button>
+      <button id="scare_wolf">Try to scare it off?</button>
+    </div>
+
+    <a href="/results">View Collective Choices →</a>
+  </div>
+
+
+</body>
+
+</html>

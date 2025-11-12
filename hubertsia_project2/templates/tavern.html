@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>The Tavern Trouble</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <style>
+        .whisper {
+            font-style: italic;
+            color: #8d6e63;
+            opacity: 0.8;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+
+<body class="village-mode">
+    <div class="container">
+        <h1>The Tavern</h1>
+        <p>
+            The tavern is warm and bright. You take a seat and enjoy your drink. Before long,
+            a group of rough-looking ruffians start making a scene.
+        </p>
+        <p class="whisper">What do you do?</p>
+
+        <div class="choices">
+            <button id="walk-home">Walk away</button>
+            <button id="talk-them">Talk to them</button>
+            <button id="throw-something">Throw something?</button>
+        </div>
+
+        <a href="/results">View Collective Choices →</a>
+    </div>
+
+    
+</body>
+
+</html>

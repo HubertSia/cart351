@@ -5,21 +5,60 @@
     <meta charset="UTF-8" />
     <title>The Dark Forest</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <style>
+        .whisper {
+            font-style: italic;
+            color: #2e7d32;
+            opacity: 0.8;
+            margin-top: 12px;
+        }
+    </style>
 </head>
 
 <body class="forest-mode">
     <div class="container">
-        <h1>You venture into the Forest</h1>
-        <p>The trees whisper around you… shadows flicker between the trunks.</p>
+        <h1>The Forest Breathes</h1>
+        <p>
+            You push through the underbrush. Damp leaves cling to your boots, and
+            something distant hums in the stillness.
+        </p>
+
+        {% set total_forest = data.get('forest', 0) %}
+        {% if total_forest > 10 %}
+        <p class="whisper">
+            The forest hums with old voices — {{ total_forest }} travelers have
+            wandered this way before you.
+        </p>
+        {% elif total_forest > 3 %}
+        <p class="whisper">
+            You think you see faint footprints where others once walked.
+        </p>
+        {% else %}
+        <p class="whisper">The path looks untouched. You might be the first.</p>
+        {% endif %}
+
         <div class="choices">
             <button id="follow-sound">Follow the strange sound</button>
             <button id="return">Return to the crossroads</button>
         </div>
+
         <a href="/results">View Collective Choices →</a>
     </div>
 
     <script>
-        document.getElementById("return").onclick = () => location.href = "/";
+        document.getElementById("return").onclick = () => (location.href = "/");
+
+        document.getElementById("follow-sound").onclick = () => {
+            fetch("/submit_choice", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ choice: "investigate" }),
+            })
+                .then((res) => res.json())
+                .then(() => (location.href = "/forest_investigate"))
+                .catch((err) => console.error(err));
+        };
     </script>
 </body>
 

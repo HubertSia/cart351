@@ -1,4 +1,9 @@
 {
-  "forest": 7,
-  "village": 3
+  "forest": 13,
+  "investigate": 12,
+  "tame_wolf": 10,
+  "village": 14,
+  "scare_wolf": 1,
+  "tavern": 2,
+  "walkaway": 1
 }

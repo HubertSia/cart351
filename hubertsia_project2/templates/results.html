@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <title>Collective Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 
 <body>
@@ -19,23 +20,10 @@
         </div>
 
         <button id="refresh">Refresh Results</button>
-        <a href="/">← Return to Story</a>
+        <a href="/"> Return to Story</a>
     </div>
 
-<script>
-    fetch("/get_data")
-        .then((res) => res.json())
-        .then((data) => {
-            const forest = data.forest || 0;
-            const village = data.village || 0;
-            document.body.classList.remove("forest-mode", "village-mode");
-            if (forest > village) {
-                document.body.classList.add("forest-mode");
-            } else if (village > forest) {
-                document.body.classList.add("village-mode");
-            }
-        });
-</script>
+ 
 </body>
 
 </html>
