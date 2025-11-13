@@ -5,11 +5,6 @@
 {% block content %}
 
 <body class="village-mode">
-    <p>
-        The tavern is warm and bright. You take a seat and enjoy your drink.
-        Before long, a group of rough-looking ruffians start making a scene.
-    </p>
-
     {% set total_tavern = data.get('tavern', 0) %}
 
     {% if total_tavern > 10 %}
@@ -26,6 +21,11 @@
         It feels like you might be the first to darken this doorstep tonight.
     </p>
     {% endif %}
+    <p>
+        The tavern is warm and bright. You take a seat and enjoy your drink.
+        Before long, a group of rough-looking ruffians start making a scene.
+    </p>
+
 
     <p class="tavern_whisper">What do you do?</p>
 
