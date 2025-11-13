@@ -2,24 +2,33 @@
 {% block title %}Forest — A Fatal Mistake{% endblock %}
 {% block header %}Ending — You're Dead{% endblock %}
 {% block body_class %}forest-mode{% endblock %}
+
 {% block content %}
-</body class="forest-mode">
+{% set total_scare = data.get('scare_wolf', 0) %}
+{% set total_all = data.values() | sum %}
 
 <p>
-    You step forward, waving your arms. The wolf lunges before you can scream. The
-    forest blurs — your heartbeat thunders in your ears.
+    You step forward, waving your arms. The wolf lunges before you can scream.
+    The forest blurs — your heartbeat thunders in your ears.
 </p>
+
 <p>
     For a moment, the trees watch silently. The forest does not forgive fear.
 </p>
 
-<p class="whisper">
+<p class="forest_whisper">
     Some say the wolf still prowls the clearing, guarding those it felled.
 </p>
 
-<button id="view-results">See results</button>
-<button id="return">Return to Crossroads</button>
+<p class="forest_whisper">
+    You’ve joined the rest — {{ total_scare }} of the spirit{{ 's' if total_scare != 1 else '' }}
+    now linger among these woods.
+</p>
 
-</body>
 
+
+<div class="choices">
+    <button id="view-results">See results</button>
+    <button id="return">Return to Crossroads</button>
+</div>
 {% endblock %}

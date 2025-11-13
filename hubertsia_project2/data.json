@@ -1,11 +1,11 @@
 {
-  "forest": 71,
-  "investigate": 20,
-  "tame_wolf": 42,
-  "village": 64,
-  "scare_wolf": 6,
-  "tavern": 33,
-  "walkaway": 10,
+  "forest": 75,
+  "investigate": 24,
+  "tame_wolf": 44,
+  "village": 65,
+  "scare_wolf": 8,
+  "tavern": 34,
+  "walkaway": 11,
   "throw": 4,
   "talk": 7
 }

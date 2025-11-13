@@ -7,14 +7,14 @@
 
 {% set total_village = data.get('village', 0) %}
 {% if total_village > 10 %}
-<p class="whisper_village">
+<p class="tavern_whisper">
   The villagers greet you as if you’re part of the story —
   {{ total_village }} wanderers have come this way before.
 </p>
 {% elif total_village > 3 %}
-<p class="whisper_village">You feel familiar eyes watching — others have passed through recently.</p>
+<p class="tavern_whisper">You feel familiar eyes watching — others have passed through recently.</p>
 {% else %}
-<p class="whisper_village">The cobblestones seem untouched — a quiet, lonely place.</p>
+<p class="tavern_whisper">The cobblestones seem untouched — a quiet, lonely place.</p>
 {% endif %}
 
 <div class="choices">
