@@ -1,14 +1,20 @@
+# Importing the Flask library
 from flask import Flask, render_template, request, jsonify
+
+# import the JSON
 import json
+
+# Import the OS library
 import os
 
 app = Flask(__name__)
 
+# Load the JSON file
 data_file = "data.json"
 
 
 def load_data():
-    """Load story data or create it if missing."""
+    # Load story data or create it if missing on the JSON file.
     if not os.path.exists(data_file):
         initial = {
             "forest": 0,
@@ -24,7 +30,8 @@ def load_data():
         with open(data_file, "w") as f:
             json.dump(initial, f, indent=2)
         return initial
-
+    
+    # Create said results on the json file and load them in the html later
     with open(data_file, "r") as f:
         data = json.load(f)
 
@@ -44,31 +51,35 @@ def load_data():
     save_data(data)
     return data
 
-
+# Save story data to the JSON file.
 def save_data(data):
-    """Save story data to the JSON file."""
     with open(data_file, "w") as f:
         json.dump(data, f, indent=2)
 
 
+# Our default route
 @app.route("/")
 def index():
     return render_template("index.html")
 
-
+# The results route
 @app.route("/results")
 def results():
     data = load_data()
     return render_template("results.html", data=data)
 
 
+
+#Record a player choice from fetch().
 @app.route("/submit_choice", methods=["POST"])
 def submit_choice():
-    """Record a player choice from fetch()."""
     payload = request.get_json()
+    
+    # Handling error code
     if not payload or "choice" not in payload:
         return jsonify(error="Invalid request"), 400
 
+# The choice here that is going to be presented
     choice = payload["choice"]
     data = load_data()
 
@@ -100,6 +111,9 @@ def get_data():
 
 
 # --- Story routes ---
+## This is mostly the templated that we're doing here
+### So depending an the app chosen, it loads the template data in the html 
+
 @app.route("/forest")
 def forest():
     return render_template("forest.html", data=load_data())
@@ -145,10 +159,12 @@ def ending_talk():
     return render_template("ending_talk.html", data=load_data())
 
 
+# Except this one, this one loads when the page is not found
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("results.html", data=load_data()), 404
 
-
+   
+# run the Flask dev server; debug=True enables automatic reload on save
 if __name__ == "__main__":
     app.run(debug=True)
