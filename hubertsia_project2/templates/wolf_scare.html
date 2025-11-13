@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Forest — A Fatal Mistake{% endblock %}
-{% block mode %}forest-mode{% endblock %}
 {% block header %}Ending — You're Dead{% endblock %}
-
+{% block body_class %}forest-mode{% endblock %}
 {% block content %}
+</body class="forest-mode">
+
 <p>
     You step forward, waving your arms. The wolf lunges before you can scream. The
     forest blurs — your heartbeat thunders in your ears.
@@ -16,5 +17,9 @@
     Some say the wolf still prowls the clearing, guarding those it felled.
 </p>
 
+<button id="view-results">See results</button>
 <button id="return">Return to Crossroads</button>
+
+</body>
+
 {% endblock %}

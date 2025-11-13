@@ -1,17 +1,22 @@
 {% extends "base.html" %}
 {% block title %}Ending — Booo{% endblock %}
-{% block mode %}village-mode{% endblock %}
 {% block header %}Ending — Booo{% endblock %}
-
+{% block body_class %}village-mode{% endblock %}
 {% block content %}
+
 <body class="village-mode">
 
-<p>
-    You quietly slip out of the tavern. The noises fade behind you. Maybe
-    adventure isn’t your thing after all.
-</p>
-<p class="whisper">Sometimes the bravest thing is... doing nothing.</p>
+    <p>
+        You quietly slip out of the tavern. The noises fade behind you. Maybe
+        adventure isn’t your thing after all.
+    </p>
+    <p class="whisper">Sometimes the bravest thing is... doing nothing.</p>
+    
+
+<button id="view-results">See results</button>
 <button id="return">Return to Crossroads</button>
+
 </body>
+
 
 {% endblock %}

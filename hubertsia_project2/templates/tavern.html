@@ -1,22 +1,38 @@
 {% extends "base.html" %}
-
 {% block title %}The Tavern Trouble{% endblock %}
-{% block mode %}village-mode{% endblock %}
 {% block header %}The Tavern{% endblock %}
-
+{% block body_class %}village-mode{% endblock %}
 {% block content %}
+
 <body class="village-mode">
+    <p>
+        The tavern is warm and bright. You take a seat and enjoy your drink.
+        Before long, a group of rough-looking ruffians start making a scene.
+    </p>
 
-<p>
-    The tavern is warm and bright. You take a seat and enjoy your drink. Before long,
-    a group of rough-looking ruffians start making a scene.
-</p>
-<p class="tavern_whisper">What do you do?</p>
+    {% set total_tavern = data.get('tavern', 0) %}
 
-<div class="choices">
-    <button id="walk-home">Walk away</button>
-    <button id="talk-them">Talk to them</button>
-    <button id="throw-something">Throw something?</button>
-</div>
+    {% if total_tavern > 10 %}
+    <p class="tavern_whisper">
+        The barkeep nods knowingly — {{ total_tavern }} adventurers have shared
+        this same drink before you.
+    </p>
+    {% elif total_tavern > 3 %}
+    <p class="tavern_whisper">
+        The chairs bear the dents of past travelers this place sees its share of people.
+    </p>
+    {% else %}
+    <p class="tavern_whisper">
+        It feels like you might be the first to darken this doorstep tonight.
+    </p>
+    {% endif %}
+
+    <p class="tavern_whisper">What do you do?</p>
+
+    <div class="choices">
+        <button id="walkaway">Walk away</button>
+        <button id="talk">Talk to them</button>
+        <button id="throw">Throw something?</button>
+    </div>
 </body>
 {% endblock %}

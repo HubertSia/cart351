@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 {% block title %}Ending — A Cheesy Evening{% endblock %}
-{% block mode %}village-mode{% endblock %}
 {% block header %}Ending — A Cheesy Evening{% endblock %}
-
+{% block body_class %}village-mode{% endblock %}
 {% block content %}
+
 <body class="village-mode">
-<p>
-    You throw a block of cheese at the ringleader. Silence falls — and then
-    laughter erupts. Turns out, they really like cheese! You successfully win
-    everyone over and are treated to a peaceful night in the tavern.
-</p>
-<p class="whisper">You’ve earned your rest... and some extra cheese.</p>
+    <p>
+        You throw a block of cheese at the ringleader. Silence falls — and then
+        laughter erupts. Turns out, they really like cheese! You successfully win
+        everyone over and are treated to a peaceful night in the tavern.
+    </p>
+    <p class="whisper">You’ve earned your rest... and some extra cheese.</p>
+   
+<button id="view-results">See results</button>
 <button id="return">Return to Crossroads</button>
+
+
 </body>
+
 {% endblock %}

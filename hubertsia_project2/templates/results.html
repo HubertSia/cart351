@@ -3,10 +3,10 @@
 {% block header %}Collective Choices So Far{% endblock %}
 
 {% block content %}
-<div id="results">
+<div class="typewriter" id="results">
     {% for path, value in data.items() %}
     <p>{{ path.capitalize() }}: <strong>{{ value }}</strong></p>
     {% endfor %}
 </div>
-<button id="refresh">Refresh Results</button>
+<button onclick="history.back()">Go Back</button>
 {% endblock %}

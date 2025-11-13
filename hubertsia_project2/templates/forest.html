@@ -1,10 +1,7 @@
 {% extends "base.html" %}
-
 {% block title %}The Dark Forest{% endblock %}
-{% block mode %}forest-mode{% endblock %}
-
 {% block header %}The Forest Breathes{% endblock %}
-
+{% block body_class %}forest-mode{% endblock %}
 {% block content %}
 <p>
     You push through the underbrush. Damp leaves cling to your boots, and
@@ -13,18 +10,18 @@
 
 {% set total_forest = data.get('forest', 0) %}
 {% if total_forest > 10 %}
-<p class="whisper">
+<p class="whisper_forest">
     The forest hums with old voices — {{ total_forest }} travelers have wandered
     here before you.
 </p>
 {% elif total_forest > 3 %}
-<p class="whisper">You notice faint footprints from past travelers.</p>
+<p class="whisper_forest">You notice faint footprints from past travelers.</p>
 {% else %}
-<p class="whisper">The path looks untouched. You might be the first.</p>
+<p class="whisper_forest">The path looks untouched. You might be the first.</p>
 {% endif %}
 
 <div class="choices">
-    <button id="follow-sound">Follow the strange sound</button>
+    <button id="investigate">Investigate the noise</button>
     <button id="return">Return to the crossroads</button>
 </div>
 {% endblock %}

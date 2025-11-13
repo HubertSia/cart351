@@ -1,4 +1,24 @@
+// --- Utility: Typewriter Effect ---
+function typeWriterEffect(element, text, speed = 30, callback) {
+  element.textContent = "";
+  element.style.visibility = "visible";
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    } else if (callback) {
+      callback();
+    }
+  }
+  type();
+}
+
+// --- Main application logic ---
 document.addEventListener("DOMContentLoaded", () => {
+  // Handle all choice buttons
   const buttons = document.querySelectorAll(".choices button");
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -37,8 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const resultsBtn = document.getElementById("view-results");
+  if (resultsBtn) {
+    resultsBtn.onclick = () => {
+      window.location.href = "/results";
+    };
+  }
+
   const returnBtn = document.getElementById("return");
-  if (returnBtn) returnBtn.onclick = () => (window.location.href = "/");
+  if (returnBtn) {
+    returnBtn.onclick = () => (window.location.href = "/");
+  }
 
   const enterTavernBtn = document.getElementById("enter-tavern");
   if (enterTavernBtn) {
@@ -54,24 +83,22 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  updateBackgroundFromData();
-  setInterval(updateBackgroundFromData, 10000);
+  // Typewriter sequence
+  const paragraphs = document.querySelectorAll("main p");
+  let index = 0;
+  paragraphs.forEach((el) => (el.style.visibility = "hidden"));
+
+  function typeNext() {
+    if (index < paragraphs.length) {
+      const el = paragraphs[index];
+      const text = el.textContent.trim();
+      el.textContent = "";
+      typeWriterEffect(el, text, 25, () => {
+        index++;
+        typeNext();
+      });
+    }
+  }
+
+  typeNext();
 });
-
-
-function updateBackgroundFromData() {
-  fetch("/get_data")
-    .then((res) => res.json())
-    .then((data) => {
-      const forest = data.forest || 0;
-      const village = data.village || 0;
-      document.body.classList.remove("forest-mode", "village-mode");
-
-      if (forest > village) {
-        document.body.classList.add("forest-mode");
-      } else if (village > forest) {
-        document.body.classList.add("village-mode");
-      }
-    })
-    .catch((err) => console.error("Error fetching data:", err));
-}

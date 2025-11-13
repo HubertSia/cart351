@@ -1,19 +1,26 @@
 {% extends "base.html" %}
 {% block title %}Ending — The Drunken Adventurer{% endblock %}
-{% block mode %}village-mode{% endblock %}
 {% block header %}Ending — The Drunken Adventurer{% endblock %}
-
+{% block body_class %}village-mode{% endblock %}
 {% block content %}
+
 <body class="village-mode">
-<p>
-    You stride over and ask them to quiet down. One glare later, the entire tavern
-    freezes — and then they scatter. Everyone stares at you in awe.
-</p>
-<p>
-    You grin, take a triumphant sip... and realize your drink was much stronger
-    than you thought. The world tilts sideways.
-</p>
-<p class="whisper">Maybe you overdid it... again.</p>
+    <p>
+        You stride over and ask them to quiet down. One glare later, the entire tavern
+        freezes — and then they scatter. Everyone stares at you in awe.
+    </p>
+    <p>
+        You grin, take a triumphant sip... and realize your drink was much stronger
+        than you thought. The world tilts sideways.
+    </p>
+    <p class="whisper">Maybe you overdid it... again.</p>
+    
+<button id="view-results">See results</button>
 <button id="return">Return to Crossroads</button>
+
+
 </body>
+
+
+
 {% endblock %}

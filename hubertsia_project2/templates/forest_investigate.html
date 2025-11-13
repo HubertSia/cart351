@@ -1,28 +1,32 @@
 {% extends "base.html" %}
 {% block title %}The Forest — Investigation{% endblock %}
-{% block mode %}forest-mode{% endblock %}
 {% block header %}The Clearing{% endblock %}
-
+{% block body_class %}forest-mode{% endblock %}
 {% block content %}
-<p>
-  In a small clearing, a wild wolf stares back at you. Its eyes gleam. It
-  lowers itself, teeth bared — it thinks you're a threat.
-</p>
 
-{% set total_investigate = data.get('investigate', 0) %}
-{% if total_investigate > 3 %}
-<p class="forest_whisper">
-  The air feels haunted — {{ total_investigate }} travelers have reached this
-  same clearing.
-</p>
-{% else %}
-<p class="forest_whisper">
-  The wolf watches quietly, as if you were the first to arrive.
-</p>
-{% endif %}
+<body class="forest-mode">
 
-<div class="choices">
-  <button id="tame_wolf">Tame it with cheese?</button>
-  <button id="scare_wolf">Try to scare it off?</button>
-</div>
+
+  <p>
+    In a small clearing, a wild wolf stares back at you. Its eyes gleam. It
+    lowers itself, teeth bared — it thinks you're a threat.
+  </p>
+
+  {% set total_investigate = data.get('investigate', 0) %}
+  {% if total_investigate > 3 %}
+  <p class="forest_whisper">
+    The air feels haunted
+  </p>
+  {% else %}
+  <p class="forest_whisper">
+    The wolf watches quietly, as if you were the first to arrive.
+  </p>
+  {% endif %}
+
+  <div class="choices">
+    <button id="tame_wolf">Tame it with cheese?</button>
+    <button id="scare_wolf">Try to scare it off?</button>
+  </div>
+</body>
+
 {% endblock %}
