@@ -66,24 +66,24 @@ window.onload = function () {
          ** bonus: if your visualizations(s) are interactive or animate.
          ****/
         case "three": {
-          console.log("three")
-          // TODO
+          console.log("three");
+          displayPositiveMoods(resJSON);
           break;
         }
         case "four": {
           console.log("four")
-          // TODO
+          displayByEventName(resJSON);
           break;
         }
 
         case "five": {
           console.log("five")
-          // TODO
+          displayByAffectStrength(resJSON);
           break;
         }
         case "six": {
           console.log("six")
-          // TODO
+          displayNegativeWeather(resJSON);
           break;
         }
         default: {
@@ -361,3 +361,252 @@ window.onload = function () {
 
   /***********************************************/
 };
+
+
+
+/************************* THREE: POSITIVE AFTER-MOODS *************************/
+function displayPositiveMoods(resultObj) {
+  let dataPoints = [];
+  let resultSet = resultObj.results;
+  let possibleMoods = resultObj.moods;
+
+  const container = document.querySelector("#childOne");
+  const description = document.querySelector("#Ex4_title");
+  const parent = document.querySelector("#parent-wrapper");
+
+  parent.style.background = "rgba(173, 216, 230,.3)";
+  description.textContent = "POSITIVE AFTER‑MOODS";
+  description.style.color = "#0077b6";
+
+  let moodColors = {};
+  let colors = ["#a0e7e5", "#b4f8c8", "#fbe7c6", "#ffaecc", "#ffc75f"];
+  for (let i = 0; i < possibleMoods.length; i++) {
+    moodColors[possibleMoods[i]] = colors[i % colors.length];
+  }
+
+  let xBase = 100;
+  let yBase = 100;
+  let columnSpacing = 50;
+
+  for (let i = 0; i < resultSet.length; i++) {
+    const r = resultSet[i];
+    let color = moodColors[r.after_mood];
+    let dp = new myDataPoint(
+      r.dataId,
+      r.day,
+      r.weather,
+      r.start_mood,
+      r.after_mood,
+      r.after_mood_strength,
+      r.event_affect_strength,
+      r.event_name,
+      color,
+      container,
+      "point_two"
+    );
+    let x = xBase + (i % possibleMoods.length) * columnSpacing;
+    let y = yBase + r.after_mood_strength * 15;
+    dp.update(x, y);
+    dataPoints.push(dp);
+  }
+
+  // lively bouncing animation 
+const bounds = {
+  minX: 50,
+  maxX: window.innerWidth - 100,
+  minY: 80,
+  maxY: 550,
+};
+
+// give each point a small random velocity
+let velocities = dataPoints.map(() => ({
+  vx: (Math.random() - 0.5) * 2,
+  vy: (Math.random() - 0.5) * 2,
+}));
+
+function animateBouncing() {
+  for (let i = 0; i < dataPoints.length; i++) {
+    let dp = dataPoints[i];
+    let v = velocities[i];
+
+    // advance the position
+    dp.x += v.vx;
+    dp.y += v.vy;
+
+    // bounce off walls
+    if (dp.x < bounds.minX || dp.x > bounds.maxX) v.vx *= -1;
+    if (dp.y < bounds.minY || dp.y > bounds.maxY) v.vy *= -1;
+
+    dp.update(dp.x, dp.y);
+
+    // subtle brightness shift based on speed
+    let speed = Math.sqrt(v.vx * v.vx + v.vy * v.vy);
+    dp.container.style.filter = `brightness(${100 + speed * 50}%)`;
+  }
+  requestAnimationFrame(animateBouncing);
+}
+animateBouncing();
+}
+/************************* FOUR: EVENT NAME ORBIT *************************/
+function displayByEventName(resultObj) {
+  let dataPoints = [];
+  let resultSet = resultObj.results;
+  let events = resultObj.events;
+
+  const parent = document.querySelector("#parent-wrapper");
+  const container = document.querySelector("#childOne");
+  const description = document.querySelector("#Ex4_title");
+
+  parent.style.background = "rgba(255, 255, 204,.3)";
+  description.textContent = "BY EVENT NAME";
+  description.style.color = "#ff6600";
+
+  let eventColors = {};
+  let colorSet = [
+    "#ffb6b9",
+    "#fae3d9",
+    "#bbded6",
+    "#8ac6d1",
+    "#c2f970",
+    "#deaaff",
+    "#ff99c8",
+    "#fcf6bd",
+    "#d0f4de",
+    "#a9def9",
+    "#e4c1f9",
+  ];
+  for (let i = 0; i < events.length; i++) {
+    eventColors[events[i]] = colorSet[i % colorSet.length];
+  }
+
+  let CX = window.innerWidth / 2;
+  let CY = 350;
+  let radius = 250;
+
+  for (let i = 0; i < resultSet.length; i++) {
+    let ev = resultSet[i];
+    let color = eventColors[ev.event_name];
+    let dp = new myDataPoint(
+      ev.dataId,
+      ev.day,
+      ev.weather,
+      ev.start_mood,
+      ev.after_mood,
+      ev.after_mood_strength,
+      ev.event_affect_strength,
+      ev.event_name,
+      color,
+      container,
+      "point_two"
+    );
+    dataPoints.push(dp);
+  }
+
+  // Orbiting rotation animation
+  let frame = 0;
+  function spin() {
+    frame += 0.01;
+    for (let i = 0; i < dataPoints.length; i++) {
+      let angle = frame + (i * 2 * Math.PI) / dataPoints.length;
+      let x = CX + Math.cos(angle) * radius;
+      let y = CY + Math.sin(angle) * radius;
+      dataPoints[i].update(x, y);
+    }
+    requestAnimationFrame(spin);
+  }
+  spin();
+}
+
+/************************* FIVE: AFFECT STRENGTH BARS *************************/
+function displayByAffectStrength(resultObj) {
+  let dataPoints = [];
+  let resultSet = resultObj.results;
+  const parent = document.querySelector("#parent-wrapper");
+  const container = document.querySelector("#childOne");
+  const description = document.querySelector("#Ex4_title");
+
+  parent.style.background = "rgba(255,230,255,.3)";
+  description.textContent = "Mon/Tue — Event Affect Strength";
+  description.style.color = "#7209b7";
+
+  let colors = { Monday: "#4cc9f0", Tuesday: "#b5179e" };
+  let yGap = 10;
+  let startX = 50;
+
+  for (let i = 0; i < resultSet.length; i++) {
+    let r = resultSet[i];
+    let dp = new myDataPoint(
+      r.dataId,
+      r.day,
+      r.weather,
+      r.start_mood,
+      r.after_mood,
+      r.after_mood_strength,
+      r.event_affect_strength,
+      r.event_name,
+      colors[r.day],
+      container,
+      "point_two"
+    );
+
+    let baseY = 50 + i * yGap;
+    let targetX = startX + r.event_affect_strength * 40;
+    // start shorter and expand
+    dp.update(startX, baseY);
+    dataPoints.push(dp);
+    setTimeout(() => dp.update(targetX, baseY), i * 20);
+  }
+}
+
+/************************* SIX: NEGATIVE MOODS SPIRAL *************************/
+function displayNegativeWeather(resultObj) {
+  let dataPoints = [];
+  let resultSet = resultObj.results;
+  const parent = document.querySelector("#parent-wrapper");
+  const container = document.querySelector("#childOne");
+  const description = document.querySelector("#Ex4_title");
+
+  parent.style.background = "rgba(10,10,10,.7)";
+  description.textContent = "DOUBLE‑NEGATIVE WEATHER SPIRAL";
+  description.style.color = "rgb(200,200,255)";
+
+  let CX = window.innerWidth / 2;
+  let CY = 400;
+
+  for (let i = 0; i < resultSet.length; i++) {
+    let r = resultSet[i];
+    let color = `hsl(${(i * 15) % 360}, 70%, 60%)`;
+    let dp = new myDataPoint(
+      r.dataId,
+      r.day,
+      r.weather,
+      r.start_mood,
+      r.after_mood,
+      r.after_mood_strength,
+      r.event_affect_strength,
+      r.event_name,
+      color,
+      container,
+      "point_two"
+    );
+    dataPoints.push(dp);
+  }
+
+  // spiral animation
+  let frame = 0;
+  function animateSpiral() {
+    frame++;
+    for (let i = 0; i < dataPoints.length; i++) {
+      let angle = 0.25 * i + frame * 0.02;
+      let r = 50 + i * 2 + Math.sin(frame * 0.02 + i) * 5;
+      let x = CX + Math.cos(angle) * r;
+      let y = CY + Math.sin(angle) * r;
+      dataPoints[i].update(x, y);
+
+      let brightness = 50 + 30 * Math.sin(frame * 0.05 + i);
+      dataPoints[i].container.style.filter = `brightness(${brightness}%)`;
+    }
+    requestAnimationFrame(animateSpiral);
+  }
+  animateSpiral();
+}
