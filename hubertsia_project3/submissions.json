@@ -1,0 +1,10 @@
+{
+  "cheese": "Brie",
+  "mood": "Cozy",
+  "info": {
+    "country": "France",
+    "milk": "Cow",
+    "texture": "Soft"
+  },
+  "timestamp": "2025-11-20T15:00:00Z"
+}

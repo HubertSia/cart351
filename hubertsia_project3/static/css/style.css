@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fffaf0;
+    color: #333;
+}
+
+form {
+    margin: 20px;
+}
+
+#board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.cheese-card {
+    border-radius: 10px;
+    padding: 15px;
+    width: 150px;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.happy {
+    background-color: #ffd740;
+}
+
+.cozy {
+    background-color: #f4a261;
+}
+
+.tired {
+    background-color: #90a4ae;
+}
+
+.inspired {
+    background-color: #81c784;
+}
+
+.adventurous {
+    background-color: #ff7043;
+}
