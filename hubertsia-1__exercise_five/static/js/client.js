@@ -362,35 +362,44 @@ window.onload = function () {
   /***********************************************/
 };
 
-
-
 /************************* THREE: POSITIVE AFTER-MOODS *************************/
 function displayPositiveMoods(resultObj) {
+  // Arrays to store generated data point objects
   let dataPoints = [];
+
+  // Unpack relevant fields from the input result object
   let resultSet = resultObj.results;
   let possibleMoods = resultObj.moods;
 
+  // Grab essential DOM elements
   const container = document.querySelector("#childOne");
   const description = document.querySelector("#Ex4_title");
   const parent = document.querySelector("#parent-wrapper");
 
+  // Set up the visual style of the parent background and title
   parent.style.background = "rgba(173, 216, 230,.3)";
   description.textContent = "POSITIVE AFTER‑MOODS";
   description.style.color = "#0077b6";
 
+  // Assign a unique color to each possible mood
   let moodColors = {};
   let colors = ["#a0e7e5", "#b4f8c8", "#fbe7c6", "#ffaecc", "#ffc75f"];
   for (let i = 0; i < possibleMoods.length; i++) {
+    // Cycle through the colors list, wrapping around using modulo
     moodColors[possibleMoods[i]] = colors[i % colors.length];
   }
 
+  // Base coordinates and spacing for point placement
   let xBase = 100;
   let yBase = 100;
   let columnSpacing = 50;
 
+  // Loop through all data results and create a visual data point for each
   for (let i = 0; i < resultSet.length; i++) {
     const r = resultSet[i];
     let color = moodColors[r.after_mood];
+
+    // Create a new myDataPoint instance using the mood's data
     let dp = new myDataPoint(
       r.dataId,
       r.day,
@@ -404,49 +413,59 @@ function displayPositiveMoods(resultObj) {
       container,
       "point_two"
     );
+
+    // Determine initial coordinates — horizontally spaced, vertically tied to strength
     let x = xBase + (i % possibleMoods.length) * columnSpacing;
     let y = yBase + r.after_mood_strength * 15;
+
+    // Render to canvas or DOM at calculated position
     dp.update(x, y);
     dataPoints.push(dp);
   }
 
-  // lively bouncing animation 
-const bounds = {
-  minX: 50,
-  maxX: window.innerWidth - 100,
-  minY: 80,
-  maxY: 550,
-};
+  // Define bounds for bouncing movement (screen limits)
+  const bounds = {
+    minX: 50,
+    maxX: window.innerWidth - 100,
+    minY: 80,
+    maxY: 550,
+  };
 
-// give each point a small random velocity
-let velocities = dataPoints.map(() => ({
-  vx: (Math.random() - 0.5) * 2,
-  vy: (Math.random() - 0.5) * 2,
-}));
+  // Each point gets a small random velocity for organic motion
+  let velocities = dataPoints.map(() => ({
+    vx: (Math.random() - 0.5) * 2,
+    vy: (Math.random() - 0.5) * 2,
+  }));
 
-function animateBouncing() {
-  for (let i = 0; i < dataPoints.length; i++) {
-    let dp = dataPoints[i];
-    let v = velocities[i];
+  // Animation loop: moves and bounces the points around the area
+  function animateBouncing() {
+    for (let i = 0; i < dataPoints.length; i++) {
+      let dp = dataPoints[i];
+      let v = velocities[i];
 
-    // advance the position
-    dp.x += v.vx;
-    dp.y += v.vy;
+      // Update position based on velocity
+      dp.x += v.vx;
+      dp.y += v.vy;
 
-    // bounce off walls
-    if (dp.x < bounds.minX || dp.x > bounds.maxX) v.vx *= -1;
-    if (dp.y < bounds.minY || dp.y > bounds.maxY) v.vy *= -1;
+      // Bounce horizontally or vertically when hitting screen bounds
+      if (dp.x < bounds.minX || dp.x > bounds.maxX) v.vx *= -1;
+      if (dp.y < bounds.minY || dp.y > bounds.maxY) v.vy *= -1;
 
-    dp.update(dp.x, dp.y);
+      dp.update(dp.x, dp.y);
 
-    // subtle brightness shift based on speed
-    let speed = Math.sqrt(v.vx * v.vx + v.vy * v.vy);
-    dp.container.style.filter = `brightness(${100 + speed * 50}%)`;
+      // Change brightness subtly depending on movement speed
+      let speed = Math.sqrt(v.vx * v.vx + v.vy * v.vy);
+      dp.container.style.filter = `brightness(${100 + speed * 50}%)`;
+    }
+
+    // Continue the animation
+    requestAnimationFrame(animateBouncing);
   }
-  requestAnimationFrame(animateBouncing);
+
+  // Start the animation
+  animateBouncing();
 }
-animateBouncing();
-}
+
 /************************* FOUR: EVENT NAME ORBIT *************************/
 function displayByEventName(resultObj) {
   let dataPoints = [];
@@ -457,10 +476,12 @@ function displayByEventName(resultObj) {
   const container = document.querySelector("#childOne");
   const description = document.querySelector("#Ex4_title");
 
+  // Set theme visuals for this display mode
   parent.style.background = "rgba(255, 255, 204,.3)";
   description.textContent = "BY EVENT NAME";
   description.style.color = "#ff6600";
 
+  // Assign color to each event name
   let eventColors = {};
   let colorSet = [
     "#ffb6b9",
@@ -479,10 +500,12 @@ function displayByEventName(resultObj) {
     eventColors[events[i]] = colorSet[i % colorSet.length];
   }
 
+  // Define the center of rotation and orbit radius
   let CX = window.innerWidth / 2;
   let CY = 350;
   let radius = 250;
 
+  // Create a circular set of data points with colors by event
   for (let i = 0; i < resultSet.length; i++) {
     let ev = resultSet[i];
     let color = eventColors[ev.event_name];
@@ -502,11 +525,12 @@ function displayByEventName(resultObj) {
     dataPoints.push(dp);
   }
 
-  // Orbiting rotation animation
+  // Animation loop: rotates points around the center
   let frame = 0;
   function spin() {
-    frame += 0.01;
+    frame += 0.01; // controls rotation speed
     for (let i = 0; i < dataPoints.length; i++) {
+      // Evenly distribute points on a circle
       let angle = frame + (i * 2 * Math.PI) / dataPoints.length;
       let x = CX + Math.cos(angle) * radius;
       let y = CY + Math.sin(angle) * radius;
@@ -514,6 +538,7 @@ function displayByEventName(resultObj) {
     }
     requestAnimationFrame(spin);
   }
+
   spin();
 }
 
@@ -529,10 +554,14 @@ function displayByAffectStrength(resultObj) {
   description.textContent = "Mon/Tue — Event Affect Strength";
   description.style.color = "#7209b7";
 
+  // Different color per day
   let colors = { Monday: "#4cc9f0", Tuesday: "#b5179e" };
+
+  // Layout variables
   let yGap = 10;
   let startX = 50;
 
+  // Create horizontal bars representing event affect strength
   for (let i = 0; i < resultSet.length; i++) {
     let r = resultSet[i];
     let dp = new myDataPoint(
@@ -549,11 +578,15 @@ function displayByAffectStrength(resultObj) {
       "point_two"
     );
 
+    // Position in vertical order (Mon/Tue stacked)
     let baseY = 50 + i * yGap;
     let targetX = startX + r.event_affect_strength * 40;
-    // start shorter and expand
+
+    // Start from baseline X and expand outward (simple animation)
     dp.update(startX, baseY);
     dataPoints.push(dp);
+
+    // Gradually animate the bar growing
     setTimeout(() => dp.update(targetX, baseY), i * 20);
   }
 }
@@ -570,9 +603,11 @@ function displayNegativeWeather(resultObj) {
   description.textContent = "DOUBLE‑NEGATIVE WEATHER SPIRAL";
   description.style.color = "rgb(200,200,255)";
 
+  // Define the center point for the spiral animation
   let CX = window.innerWidth / 2;
   let CY = 400;
 
+  // Create data points with hue variations (rainbow spiral effect)
   for (let i = 0; i < resultSet.length; i++) {
     let r = resultSet[i];
     let color = `hsl(${(i * 15) % 360}, 70%, 60%)`;
@@ -592,21 +627,26 @@ function displayNegativeWeather(resultObj) {
     dataPoints.push(dp);
   }
 
-  // spiral animation
+  // Spiral movement animation
   let frame = 0;
   function animateSpiral() {
     frame++;
     for (let i = 0; i < dataPoints.length; i++) {
+      // Calculate polar coordinates to make a spiral pattern
       let angle = 0.25 * i + frame * 0.02;
       let r = 50 + i * 2 + Math.sin(frame * 0.02 + i) * 5;
       let x = CX + Math.cos(angle) * r;
       let y = CY + Math.sin(angle) * r;
+
       dataPoints[i].update(x, y);
 
+      // Animate brightness pulsing over time
       let brightness = 50 + 30 * Math.sin(frame * 0.05 + i);
       dataPoints[i].container.style.filter = `brightness(${brightness}%)`;
     }
+
     requestAnimationFrame(animateSpiral);
   }
+
   animateSpiral();
 }
