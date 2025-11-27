@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     text-align: center;
     background-color: #fffaf0;
     color: #333;
@@ -22,6 +22,11 @@ form {
     width: 150px;
     color: white;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.cheese-card:hover {
+    transform: scale(1.05);
 }
 
 .happy {
