@@ -1,0 +1,181 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff8e1;
+    font-family: "Baloo 2", cursive;
+    color: #4b3b09;
+    text-align: center;
+}
+
+h1 {
+    margin: 15px;
+    color: #d48806;
+    text-shadow: 1px 2px #fff1c1;
+}
+
+/* Form */
+form {
+    background-color: #ffeea1;
+    border: 2px solid #f3c274;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background-color: #f9a825;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+button:hover {
+    background-color: #f57f17;
+}
+
+#moodSpace {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Base cheese bubble style */
+.cheese-bubble {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    padding: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #4b3b09;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    animation: wiggle 2s infinite ease-in-out;
+    user-select: none;
+}
+
+/* Default gentle wobble */
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(3deg) scale(0.98);
+    }
+}
+
+/* Melty – soft golden, slow pulse */
+.mood-melty {
+    background: radial-gradient(circle at 30% 30%, #fff9c4, #ffd95b, #fbc02d);
+    border: 3px solid #f3c274;
+    animation: melty 4s ease-in-out infinite;
+}
+
+@keyframes melty {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Gooey – rich yellow-orange, wobble */
+.mood-gooey {
+    background: radial-gradient(circle at 40% 40%, #ffecb3, #ffcc80, #ffb74d);
+    border: 3px solid #ffc107;
+    animation: gooey 2s ease-in-out infinite;
+}
+
+@keyframes gooey {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(5deg) scale(1.1);
+    }
+
+    50% {
+        transform: rotate(-4deg) scale(0.9);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+/* Crispy – toasted orange, jitter pulse */
+.mood-crispy {
+    background: radial-gradient(circle at 40% 40%, #ffe082, #ffb300, #f57c00);
+    border: 3px solid #ef6c00;
+    animation: crispy 0.7s linear infinite alternate;
+}
+
+@keyframes crispy {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1) rotate(2deg);
+    }
+}
+
+/* Sharp – mature yellow, spinning */
+.mood-sharp {
+    background: radial-gradient(circle at 30% 30%, #fff157, #fdd835, #f9a825);
+    border: 3px solid #fbc02d;
+    animation: sharp 3s linear infinite;
+}
+
+@keyframes sharp {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Blue – soft cyan-blue, slow float */
+.mood-blue {
+    background: radial-gradient(circle at 40% 40%, #e0f7fa, #81d4fa, #29b6f6);
+    border: 3px solid #039be5;
+    color: #013a63;
+    animation: bluefloat 6s ease-in-out infinite;
+}
+
+@keyframes bluefloat {
+    0% {
+        transform: translateY(0) scale(0.9);
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.1);
+    }
+
+    100% {
+        transform: translateY(0) scale(0.9);
+    }
+}

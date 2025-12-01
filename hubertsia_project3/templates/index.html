@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheCheese Bubble Moodboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+    <h1>The Cheese Mood Bubbles</h1>
+
+    <form id="moodForm">
+        <label>Your Mood:</label>
+        <select id="mood">
+            <option value="melty">Melty</option>
+            <option value="gooey">Gooey</option>
+            <option value="crispy">Crispy</option>
+            <option value="sharp">Sharp</option>
+            <option value="blue">Blue</option>
+        </select>
+
+        <label>Comment:</label>
+        <input type="text" id="comment" placeholder="Your cheesy thought..." />
+        <button type="submit">Send</button>
+    </form>
+
+    <div id="moodSpace"></div>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
