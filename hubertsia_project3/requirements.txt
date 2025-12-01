@@ -1,6 +1,0 @@
-Flask
-Flask-SocketIO
-pymongo
-eventlet
-python-dotenv
-requests
