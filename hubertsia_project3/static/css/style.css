@@ -9,14 +9,7 @@ body {
     /* soft golden cheese base */
 
     /* creamy Swiss-cheese holes with depth variation */
-    background-image:
-        radial-gradient(circle at 15% 25%, rgba(0, 0, 0, 0.12) 0, transparent 25%),
-        radial-gradient(circle at 35% 65%, rgba(0, 0, 0, 0.1) 0, transparent 23%),
-        radial-gradient(circle at 65% 40%, rgba(0, 0, 0, 0.12) 0, transparent 22%),
-        radial-gradient(circle at 85% 75%, rgba(0, 0, 0, 0.09) 0, transparent 25%),
-        radial-gradient(circle at 45% 90%, rgba(0, 0, 0, 0.1) 0, transparent 30%),
-        radial-gradient(circle at 75% 15%, rgba(255, 255, 255, 0.15) 0, transparent 30%);
-    background-size: 220px 220px;
+    background-image: url("../assets/images/cheese.jpg");
     background-repeat: repeat;
 }
 /* ----------------- Header ----------------- */

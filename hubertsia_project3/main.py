@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 import os
 from bson import ObjectId
 
+# Make sure the following library install are download: pip install flask flask-pymongo flask-cors flask-socketio python-dotenv
+
 # Load environment variables from .env
 load_dotenv()
 
