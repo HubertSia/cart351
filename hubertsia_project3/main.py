@@ -1,3 +1,6 @@
+# Required installs (make sure these are installed via pip):
+# pip install flask flask-pymongo flask-cors flask-socketio python-dotenv
+
 from flask import Flask, render_template, request
 from flask_pymongo import PyMongo
 from flask_cors import CORS
@@ -7,7 +10,6 @@ from dotenv import load_dotenv
 import os
 from bson import ObjectId
 
-# Make sure the following library install are download: pip install flask flask-pymongo flask-cors flask-socketio python-dotenv
 
 # Load environment variables from .env
 load_dotenv()
@@ -22,19 +24,21 @@ MONGO_USER = os.getenv("MONGODB_USER")
 MONGO_PASS = os.getenv("DATABASE_PASSWORD")
 MONGO_DB = os.getenv("DATABASE_NAME")
 
+# Construct MongoDB connection URI
 MONGO_URI = (
     f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}"
     f"@cluster0.qzy0zng.mongodb.net/{MONGO_DB}"
     f"?retryWrites=true&w=majority&appName=Cluster0"
 )
 
+# Instantiate PyMongo for database access
 app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
 
 # --- Initialize Socket.IO ---
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-
+# --- Utility Function ---
 # Helper — make MongoDB documents JSON-friendly
 def serialize_mongo(doc):
     """Convert ObjectId and other BSON types to JSON-serializable forms."""
@@ -47,6 +51,7 @@ def serialize_mongo(doc):
     return doc
 
 
+# --- Socket.IO Event Handlers ---
 @app.route("/")
 def index():
     """Serve the main page."""
@@ -62,7 +67,10 @@ def handle_connect():
     moods = list(mongo.db.moods.find())
     moods = serialize_mongo(moods)
 
+    # Send all existing moods to the new client
     emit("init-moods", moods)
+    
+    # Confirm successful connection
     emit("connect-confirm", {"status": "connected"})
 
 
@@ -73,6 +81,8 @@ def handle_new_mood(data):
 
     # Insert into MongoDB
     result = mongo.db.moods.insert_one(data)
+    
+    # Include _id for frontend reference
     data["_id"] = str(result.inserted_id)
 
     # Broadcast to everyone (including sender)
@@ -88,4 +98,6 @@ def handle_disconnect():
 
 # --- Run the server ---
 if __name__ == "__main__":
+    
+        # Note: allow_unsafe_werkzeug used only for dev mode
     socketio.run(app, debug=True, allow_unsafe_werkzeug=True)
